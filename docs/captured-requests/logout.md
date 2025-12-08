@@ -1,3 +1,5 @@
+request 1:
+
 curl 'https://api.ebuuhia.mn/api/v1/getComment' \
   -H 'sec-ch-ua-platform: "Windows"' \
   -H 'Cache-Control: no-cache' \
@@ -9,6 +11,9 @@ curl 'https://api.ebuuhia.mn/api/v1/getComment' \
   -H 'Expires: 0' \
   -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36' \
   -H 'Accept: application/json, text/plain, */*' ;
+
+request 2:
+
 curl 'https://api.ebuuhia.mn/api/v1/getComic' \
   -H 'sec-ch-ua-platform: "Windows"' \
   -H 'Cache-Control: no-cache' \
@@ -21,6 +26,10 @@ curl 'https://api.ebuuhia.mn/api/v1/getComic' \
   -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36' \
   -H 'Accept: application/json, text/plain, */*'
 
-response:
+response 1:
+
 {"data":[]}
+
+response 2:
+
 {"data":[]}

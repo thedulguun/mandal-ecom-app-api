@@ -1,7 +1,7 @@
 File-Name: ai-rules.md
 File-Role: rules
-OS-Version: 0.1.0
-Last-Updated: 2025-12-08T09:22:00Z
+OS-Version: 0.1.3
+Last-Updated: 2025-12-09T02:55:00Z
 Last-Updated-By: AI
 Special-OS-File: false
 
@@ -57,3 +57,7 @@ Special-OS-File: false
 - All OS files include the metadata header defined in `ai-os-schema.md` and share the current `OS-Version`.
 - Summaries must not conflict with core OS files. Workflows must respect permissions in this document.
 - When ambiguity or inconsistency is detected, pause and request clarification before proceeding.
+
+## Dev Note
+- I'm new to this whole API thing.
+- When you use tech nouns like CORS, API, proxy, etc., explain things simply and add short bracketed notes after the tech names so I learn both the name and what it means.

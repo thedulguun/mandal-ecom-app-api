@@ -1,7 +1,7 @@
 File-Name: ai-os-schema.md
 File-Role: schema
-OS-Version: 0.1.0
-Last-Updated: 2025-12-08T09:22:00Z
+OS-Version: 0.1.3
+Last-Updated: 2025-12-09T02:55:00Z
 Last-Updated-By: AI
 Special-OS-File: false
 

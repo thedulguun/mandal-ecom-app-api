@@ -87,9 +87,9 @@
   <header>
     <h1>ebuuhia API Test Page</h1>
     <p class="notes">
-      Minimal HTML tester for ebuuhia API calls. Uses client-side fetch against the live endpoints.
-      Set the base URL, log in to get a token, then fetch deliveries. Logout calls the two observed
-      endpoints from the captured traffic. Raw captures stay in <code>docs/captured-requests/</code>.
+      Minimal HTML tester for ebuuhia API calls. Uses a local proxy by default so the browser hits your server,
+      not the provider directly. Set the base URL, log in to get a token, then fetch deliveries. Logout calls the
+      two observed endpoints from the captured traffic. Raw captures stay in <code>docs/captured-requests/</code>.
     </p>
   </header>
 
@@ -98,7 +98,7 @@
     <div class="row">
       <label>
         Base URL (API root)
-        <input id="baseUrl" value="https://api.ebuuhia.mn/api/v1" />
+        <input id="baseUrl" value="http://localhost:3000/api" />
       </label>
       <label>
         Current token
@@ -107,8 +107,9 @@
       <button id="applyToken">Set token manually</button>
     </div>
     <p class="notes">
-      Captured requests show <code>Authorization</code> using the raw JWT (no <code>Bearer</code> prefix). If a call returns a
-      new token, it will replace the current one automatically.
+      Default points to the local proxy. Use the provider URL if you want to call it directly
+      (<code>https://api.ebuuhia.mn/api/v1</code>). Captured requests show <code>Authorization</code> using the raw JWT
+      (no <code>Bearer</code> prefix).
     </p>
   </section>
 
@@ -121,6 +122,192 @@
       <button id="loginBtn">Login</button>
     </div>
     <p class="notes">POST /login with JSON body. Response token is stored and shown below.</p>
+  </section>
+
+  <section>
+    <h2>Delivery</h2>
+    <div class="row">
+      <label>startLimit <input id="dStart" value="0" /></label>
+      <label>endLimit <input id="dEnd" value="50" /></label>
+      <label>status <input id="dStatus" value="" /></label>
+      <label>id (customer) <input id="dCustomer" value="" /></label>
+      <button id="deliveryListBtn">List deliveries</button>
+    </div>
+    <p class="notes">GET /delivery (via proxy) with common filters.</p>
+  </section>
+
+  <section>
+    <h2>User/Branch</h2>
+    <div class="row">
+      <button id="userListBtn">List users</button>
+      <button id="branchListBtn">List branches</button>
+      <button id="rolesListBtn">List roles</button>
+    </div>
+    <p class="notes">Simple list calls to check connectivity.</p>
+  </section>
+
+  <section>
+    <h2>Manual API call</h2>
+    <div class="row">
+      <label>Method <input id="manualMethod" value="GET" /></label>
+      <label>Path (relative to base) <input id="manualPath" value="/order" /></label>
+      <label>Query (JSON) <input id="manualQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
+      <label>Body (JSON) <input id="manualBody" placeholder="{} for POST/PATCH" /></label>
+      <label>Headers (JSON) <input id="manualHeaders" placeholder="{}" /></label>
+      <button id="manualSend">Send</button>
+    </div>
+    <p class="notes">Uses the base URL and token (if set). Path should start with /. Query/body/headers are parsed from JSON.</p>
+  </section>
+
+  <section>
+    <h2>Orders (helpers)</h2>
+    <div class="row">
+      <label>Query (JSON) <input id="orderQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
+      <label>Body (JSON) <input id="orderBody" placeholder="{\"id\":123}" /></label>
+      <label>Endpoint
+        <select id="orderEndpoint">
+          <option value="orderList">orderList (GET /order)</option>
+          <option value="orderArchive">orderArchive</option>
+          <option value="orderReceivedDriver">orderReceivedDriver</option>
+          <option value="orderFinished">orderFinished</option>
+          <option value="orderReport">orderReport</option>
+          <option value="orderCustomer">orderCustomer</option>
+          <option value="orderGetById">orderGetById</option>
+          <option value="orderCreate">orderCreate (POST)</option>
+          <option value="orderEdit">orderEdit (PATCH)</option>
+          <option value="orderChangeStatus">orderChangeStatus (PATCH)</option>
+          <option value="orderChangeStatus2">orderChangeStatus2 (PATCH)</option>
+          <option value="orderChangeStatusQR">orderChangeStatusQR (PATCH)</option>
+          <option value="orderChangeRegion">orderChangeRegion (PATCH)</option>
+          <option value="orderChangeRegionOrder">orderChangeRegionOrder (PATCH)</option>
+        </select>
+      </label>
+      <button id="orderSend">Send</button>
+    </div>
+    <p class="notes">Set query/body JSON as needed. Uses generated helpers.</p>
+  </section>
+
+  <section>
+    <h2>Delivery (helpers)</h2>
+    <div class="row">
+      <label>Query (JSON) <input id="deliveryQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
+      <label>Body (JSON) <input id="deliveryBody" placeholder="{\"id\":123}" /></label>
+      <label>Endpoint
+        <select id="deliveryEndpoint">
+          <option value="deliveryList">deliveryList (GET)</option>
+          <option value="deliveryWithArchive">deliveryWithArchive (GET)</option>
+          <option value="deliveryItemsById">deliveryItemsById (GET)</option>
+          <option value="deliveryItems">deliveryItems (GET)</option>
+          <option value="deliveryCustomer">deliveryCustomer (GET)</option>
+          <option value="deliveryCheck">deliveryCheck (GET)</option>
+          <option value="deliveryGetChat">deliveryGetChat (GET)</option>
+          <option value="deliveryCreate">deliveryCreate (POST)</option>
+          <option value="deliveryEdit">deliveryEdit (PATCH)</option>
+          <option value="deliveryEditReceivedMoney">deliveryEditReceivedMoney (PATCH)</option>
+          <option value="deliveryEditDesc">deliveryEditDesc (PATCH)</option>
+          <option value="deliveryVerify">deliveryVerify (PATCH)</option>
+          <option value="deliveryChangeStatusQR">deliveryChangeStatusQR (PATCH)</option>
+          <option value="deliveryCreateChat">deliveryCreateChat (POST)</option>
+        </select>
+      </label>
+      <button id="deliverySend">Send</button>
+    </div>
+    <p class="notes">Multipart uploads not wired; use manual if needed.</p>
+  </section>
+
+  <section>
+    <h2>User/Branch/Role (helpers)</h2>
+    <div class="row">
+      <label>Query (JSON) <input id="userQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
+      <label>Body (JSON) <input id="userBody" placeholder="{\"id\":123}" /></label>
+      <label>Endpoint
+        <select id="userEndpoint">
+          <option value="userList">userList (GET)</option>
+          <option value="userById">userById (GET)</option>
+          <option value="driverList">driverList (GET)</option>
+          <option value="branchList">branchList (GET)</option>
+          <option value="branchById">branchById (GET)</option>
+          <option value="branchIdUserId">branchIdUserId (GET)</option>
+          <option value="rolesList">rolesList (GET)</option>
+          <option value="userCreate">userCreate (POST)</option>
+          <option value="branchCreate">branchCreate (POST)</option>
+          <option value="driverCreate">driverCreate (POST)</option>
+          <option value="userEdit">userEdit (PATCH)</option>
+          <option value="branchEdit">branchEdit (PATCH)</option>
+          <option value="userApprove">userApprove (PATCH)</option>
+          <option value="branchApprove">branchApprove (PATCH)</option>
+          <option value="changePassword">changePassword (PATCH)</option>
+          <option value="resetPassword">resetPassword (POST)</option>
+          <option value="resetPasswordAlt">resetPasswordAlt (POST)</option>
+          <option value="changeDans">changeDans (PATCH)</option>
+          <option value="globalSearch">globalSearch (GET)</option>
+          <option value="roleCreate">roleCreate (POST)</option>
+        </select>
+      </label>
+      <button id="userSend">Send</button>
+    </div>
+    <p class="notes">Provide query/body JSON as required by the endpoint.</p>
+  </section>
+
+  <section>
+    <h2>Region/Khoroo</h2>
+    <div class="row">
+      <label>Query (JSON) <input id="regionQuery" value="{}" /></label>
+      <label>Body (JSON) <input id="regionBody" placeholder="{\"name\":\"region\"}" /></label>
+      <label>Endpoint
+        <select id="regionEndpoint">
+          <option value="regionList">regionList (GET)</option>
+          <option value="regionCreate">regionCreate (POST)</option>
+          <option value="khorooList">khorooList (GET)</option>
+          <option value="khorooCreate">khorooCreate (POST)</option>
+        </select>
+      </label>
+      <button id="regionSend">Send</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Delete helpers</h2>
+    <div class="row">
+      <label>Query (JSON) <input id="deleteQuery" value="{\"table\":\"orders\",\"id\":0}" /></label>
+      <label>Endpoint
+        <select id="deleteEndpoint">
+          <option value="deleteAny">deleteAny</option>
+          <option value="deleteOrder">deleteOrder</option>
+          <option value="deleteItem">deleteItem</option>
+          <option value="deleteDelivery">deleteDelivery</option>
+          <option value="deleteBranch">deleteBranch</option>
+          <option value="deleteUser">deleteUser</option>
+          <option value="deleteWare">deleteWare</option>
+        </select>
+      </label>
+      <button id="deleteSend">Send</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>WebHelp / Notifications / Print</h2>
+    <div class="row">
+      <label>Query (JSON) <input id="webQuery" value="{}" /></label>
+      <label>Body (JSON) <input id="webBody" placeholder="{\"title\":\"...\"}" /></label>
+      <label>Endpoint
+        <select id="webEndpoint">
+          <option value="comicList">comicList (GET)</option>
+          <option value="commentList">commentList (GET)</option>
+          <option value="notificationList">notificationList (GET)</option>
+          <option value="printGetById">printGetById (GET)</option>
+          <option value="printGetByIdDelivery">printGetByIdDelivery (GET)</option>
+          <option value="printReportDriverGeneral">printReportDriverGeneral (GET)</option>
+          <option value="reportDriverExcel">reportDriverExcel (GET)</option>
+          <option value="reportCustomerExcel">reportCustomerExcel (GET)</option>
+          <option value="reportWareSelect">reportWareSelect (GET)</option>
+          <option value="comicCreate">comicCreate (POST)</option>
+          <option value="commentCreate">commentCreate (POST)</option>
+        </select>
+      </label>
+      <button id="webSend">Send</button>
+    </div>
+    <p class="notes">Upload/image endpoints are not wired here; use manual call if needed.</p>
   </section>
 
   <section>
@@ -153,11 +340,89 @@
     <pre id="logOutput">{ "info": "Logs and responses will appear here." }</pre>
   </section>
 
-  <script>
+  <script type="module">
+    import {
+      setBaseUrl,
+      setToken,
+      getToken,
+      login,
+      logout,
+      getDeliveryList,
+      deliveryList,
+      userList,
+      branchList,
+      rolesList,
+      orderList,
+      orderArchive,
+      orderReceivedDriver,
+      orderFinished,
+      orderReport,
+      orderCustomer,
+      orderGetById,
+      orderCreate,
+      orderEdit,
+      orderChangeStatus,
+      orderChangeStatus2,
+      orderChangeStatusQR,
+      orderChangeRegion,
+      orderChangeRegionOrder,
+      deliveryWithArchive,
+      deliveryItemsById,
+      deliveryItems,
+      deliveryCustomer,
+      deliveryCheck,
+      deliveryGetChat,
+      deliveryCreate,
+      deliveryEdit,
+      deliveryEditReceivedMoney,
+      deliveryEditDesc,
+      deliveryVerify,
+      deliveryChangeStatusQR,
+      deliveryCreateChat,
+      driverList,
+      branchById,
+      branchIdUserId,
+      userById,
+      branchCreate,
+      userCreate,
+      driverCreate,
+      branchEdit,
+      userEdit,
+      userApprove,
+      branchApprove,
+      changePassword,
+      resetPassword,
+      resetPasswordAlt,
+      changeDans,
+      globalSearch,
+      roleCreate,
+      regionList,
+      regionCreate,
+      khorooList,
+      khorooCreate,
+      deleteAny,
+      deleteOrder,
+      deleteItem,
+      deleteDelivery,
+      deleteBranch,
+      deleteUser,
+      deleteWare,
+      comicList,
+      commentList,
+      notificationList,
+      printGetById,
+      printGetByIdDelivery,
+      printReportDriverGeneral,
+      reportDriverExcel,
+      reportCustomerExcel,
+      reportWareSelect,
+      comicCreate,
+      commentCreate
+    } from './client/browser/index.js';
+
     const baseUrlInput = document.getElementById('baseUrl');
     const tokenInput = document.getElementById('tokenInput');
     const logOutput = document.getElementById('logOutput');
-    let currentToken = '';
 
     const log = (label, data) => {
       const entry = {
@@ -168,49 +433,50 @@
       logOutput.textContent = `${entry.at} | ${entry.label}\n${JSON.stringify(entry.data, null, 2)}\n\n${logOutput.textContent}`;
     };
 
-    const setToken = (token, source = 'setToken') => {
-      currentToken = token || '';
-      tokenInput.value = currentToken;
-      log(source, { token: currentToken });
+    const formatError = (err) => ({
+      message: err?.message || err,
+      status: err?.status,
+      body: err?.body
+    });
+
+    const syncTokenInput = (source = 'token sync') => {
+      tokenInput.value = getToken();
+      if (getToken()) {
+        log(source, { token: getToken() });
+      }
     };
 
+    const applyBaseUrl = () => setBaseUrl(baseUrlInput.value);
+
+    applyBaseUrl();
+
     document.getElementById('applyToken').addEventListener('click', () => {
-      setToken(tokenInput.value, 'manual token set');
+      setToken(tokenInput.value || '');
+      log('manual token set', { token: getToken() });
     });
 
     document.getElementById('loginBtn').addEventListener('click', async () => {
-      const base = baseUrlInput.value.replace(/\/$/, '');
+      applyBaseUrl();
       const body = {
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,
-        device_token: document.getElementById('deviceToken').value || null
+        deviceToken: document.getElementById('deviceToken').value || null
       };
       try {
-        const res = await fetch(`${base}/login`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json, text/plain, */*'
-          },
-          body: JSON.stringify(body)
-        });
-        const data = await res.json();
-        if (data && (data.token || (data.data && data.data.token))) {
-          setToken(data.token || data.data.token, 'login response token');
+        const res = await login({ body });
+        const token = res?.data?.token || res?.data?.data?.token;
+        if (token) {
+          setToken(token);
+          syncTokenInput('login response token');
         }
-        log('login response', { status: res.status, data });
+        log('login response', { status: res.status, data: res.data });
       } catch (err) {
-        log('login error', { error: err.message || err });
+        log('login error', formatError(err));
       }
     });
 
     document.getElementById('deliveriesBtn').addEventListener('click', async () => {
-      if (!currentToken) {
-        log('deliveries error', { error: 'Set token first (login or manual).' });
-        return;
-      }
-      const base = baseUrlInput.value.replace(/\/$/, '');
-      const url = new URL(`${base}/getDeliveryCustomer`);
+      applyBaseUrl();
       const params = {
         startLimit: document.getElementById('startLimit').value,
         endLimit: document.getElementById('endLimit').value,
@@ -222,40 +488,280 @@
         id: document.getElementById('customerId').value,
         action: document.getElementById('action').value
       };
-      Object.entries(params).forEach(([key, val]) => url.searchParams.set(key, val));
       try {
-        const res = await fetch(url.toString(), {
-          headers: {
-            Authorization: currentToken,
-            Accept: 'application/json, text/plain, */*'
-          }
-        });
-        const data = await res.json();
-        if (data && (data.token || (data.data && data.data.token))) {
-          setToken(data.token || data.data.token, 'deliveries response token');
+        const res = await getDeliveryList({ query: params });
+        const token = res?.data?.token || res?.data?.data?.token;
+        if (token) {
+          setToken(token);
+          syncTokenInput('deliveries response token');
         }
-        log('deliveries response', { status: res.status, data });
+        log('deliveries response', { status: res.status, data: res.data });
       } catch (err) {
-        log('deliveries error', { error: err.message || err });
+        log('deliveries error', formatError(err));
       }
     });
 
     document.getElementById('logoutBtn').addEventListener('click', async () => {
-      const base = baseUrlInput.value.replace(/\/$/, '');
-      const endpoints = ['getComment', 'getComic'];
-      for (const ep of endpoints) {
-        try {
-          const res = await fetch(`${base}/${ep}`, {
-            headers: {
-              Accept: 'application/json, text/plain, */*'
-            }
-          });
-          const data = await res.json();
-          log(`${ep} response`, { status: res.status, data });
-        } catch (err) {
-          log(`${ep} error`, { error: err.message || err });
-        }
+      applyBaseUrl();
+      try {
+        const results = await logout();
+        log('logout results', results);
+      } catch (err) {
+        log('logout error', formatError(err));
       }
+    });
+
+    document.getElementById('deliveryListBtn').addEventListener('click', async () => {
+      applyBaseUrl();
+      const query = {
+        startLimit: document.getElementById('dStart').value,
+        endLimit: document.getElementById('dEnd').value,
+        status: document.getElementById('dStatus').value,
+        id: document.getElementById('dCustomer').value
+      };
+      try {
+        const res = await deliveryList({ query });
+        log('delivery list', { status: res.status, data: res.data });
+      } catch (err) {
+        log('delivery list error', formatError(err));
+      }
+    });
+
+    document.getElementById('userListBtn').addEventListener('click', async () => {
+      applyBaseUrl();
+      try {
+        const res = await userList({ query: { startLimit: 0, endLimit: 50 } });
+        log('user list', { status: res.status, data: res.data });
+      } catch (err) {
+        log('user list error', formatError(err));
+      }
+    });
+
+    document.getElementById('branchListBtn').addEventListener('click', async () => {
+      applyBaseUrl();
+      try {
+        const res = await branchList({ query: { startLimit: 0, endLimit: 50 } });
+        log('branch list', { status: res.status, data: res.data });
+      } catch (err) {
+        log('branch list error', formatError(err));
+      }
+    });
+
+    document.getElementById('rolesListBtn').addEventListener('click', async () => {
+      applyBaseUrl();
+      try {
+        const res = await rolesList({ query: { order: 'asc' } });
+        log('roles list', { status: res.status, data: res.data });
+      } catch (err) {
+        log('roles list error', formatError(err));
+      }
+    });
+
+    const runHelper = async (helper, label, options = {}) => {
+      applyBaseUrl();
+      try {
+        const res = await helper(options);
+        log(label, { status: res.status, data: res.data });
+      } catch (err) {
+        log(`${label} error`, formatError(err));
+      }
+    };
+
+    const safeParse = (text, fallback) => {
+      if (!text) return fallback;
+      try {
+        return JSON.parse(text);
+      } catch {
+        return fallback;
+      }
+    };
+
+    document.getElementById('manualSend').addEventListener('click', async () => {
+      applyBaseUrl();
+      const method = document.getElementById('manualMethod').value || 'GET';
+      let path = document.getElementById('manualPath').value || '/';
+      if (!path.startsWith('/')) path = '/' + path;
+      const queryObj = safeParse(document.getElementById('manualQuery').value, {});
+      const bodyObj = safeParse(document.getElementById('manualBody').value, null);
+      const headerObj = safeParse(document.getElementById('manualHeaders').value, {});
+      try {
+        const base = baseUrlInput.value.replace(/\/$/, '');
+        const url = new URL(`${base}${path}`);
+        Object.entries(queryObj || {}).forEach(([k, v]) => {
+          if (v !== undefined && v !== null && v !== '') url.searchParams.set(k, v);
+        });
+        const headers = { Accept: 'application/json, text/plain, */*', ...headerObj };
+        if (getToken() && !headers.Authorization) headers.Authorization = getToken();
+        const options = { method, headers };
+        const upper = method.toUpperCase();
+        if (bodyObj !== null && upper !== 'GET' && upper !== 'HEAD') {
+          options.body = JSON.stringify(bodyObj);
+          options.headers['Content-Type'] = 'application/json';
+        }
+        const res = await fetch(url.toString(), options);
+        const text = await res.text();
+        let data;
+        try {
+          data = text ? JSON.parse(text) : null;
+        } catch {
+          data = text;
+        }
+        log('manual response', { status: res.status, data });
+      } catch (err) {
+        log('manual error', formatError(err));
+      }
+    });
+
+    document.getElementById('orderSend').addEventListener('click', async () => {
+      const ep = document.getElementById('orderEndpoint').value;
+      const query = safeParse(document.getElementById('orderQuery').value, {});
+      const body = safeParse(document.getElementById('orderBody').value, null);
+      const map = {
+        orderList,
+        orderArchive,
+        orderReceivedDriver,
+        orderFinished,
+        orderReport,
+        orderCustomer,
+        orderGetById,
+        orderCreate,
+        orderEdit,
+        orderChangeStatus,
+        orderChangeStatus2,
+        orderChangeStatusQR,
+        orderChangeRegion,
+        orderChangeRegionOrder
+      };
+      const helper = map[ep];
+      if (!helper) return;
+      const opts = {};
+      if (Object.keys(query || {}).length) opts.query = query;
+      if (body !== null) opts.body = body;
+      await runHelper(helper, ep, opts);
+    });
+
+    document.getElementById('deliverySend').addEventListener('click', async () => {
+      const ep = document.getElementById('deliveryEndpoint').value;
+      const query = safeParse(document.getElementById('deliveryQuery').value, {});
+      const body = safeParse(document.getElementById('deliveryBody').value, null);
+      const map = {
+        deliveryList,
+        deliveryWithArchive,
+        deliveryItemsById,
+        deliveryItems,
+        deliveryCustomer,
+        deliveryCheck,
+        deliveryGetChat,
+        deliveryCreate,
+        deliveryEdit,
+        deliveryEditReceivedMoney,
+        deliveryEditDesc,
+        deliveryVerify,
+        deliveryChangeStatusQR,
+        deliveryCreateChat
+      };
+      const helper = map[ep];
+      if (!helper) return;
+      const opts = {};
+      if (Object.keys(query || {}).length) opts.query = query;
+      if (body !== null) opts.body = body;
+      await runHelper(helper, ep, opts);
+    });
+
+    document.getElementById('userSend').addEventListener('click', async () => {
+      const ep = document.getElementById('userEndpoint').value;
+      const query = safeParse(document.getElementById('userQuery').value, {});
+      const body = safeParse(document.getElementById('userBody').value, null);
+      const map = {
+        userList,
+        userById,
+        driverList,
+        branchList,
+        branchById,
+        branchIdUserId,
+        rolesList,
+        userCreate,
+        branchCreate,
+        driverCreate,
+        userEdit,
+        branchEdit,
+        userApprove,
+        branchApprove,
+        changePassword,
+        resetPassword,
+        resetPasswordAlt,
+        changeDans,
+        globalSearch,
+        roleCreate
+      };
+      const helper = map[ep];
+      if (!helper) return;
+      const opts = {};
+      if (Object.keys(query || {}).length) opts.query = query;
+      if (body !== null) opts.body = body;
+      await runHelper(helper, ep, opts);
+    });
+
+    document.getElementById('regionSend').addEventListener('click', async () => {
+      const ep = document.getElementById('regionEndpoint').value;
+      const query = safeParse(document.getElementById('regionQuery').value, {});
+      const body = safeParse(document.getElementById('regionBody').value, null);
+      const map = {
+        regionList,
+        regionCreate,
+        khorooList,
+        khorooCreate
+      };
+      const helper = map[ep];
+      if (!helper) return;
+      const opts = {};
+      if (Object.keys(query || {}).length) opts.query = query;
+      if (body !== null) opts.body = body;
+      await runHelper(helper, ep, opts);
+    });
+
+    document.getElementById('deleteSend').addEventListener('click', async () => {
+      const ep = document.getElementById('deleteEndpoint').value;
+      const query = safeParse(document.getElementById('deleteQuery').value, {});
+      const map = {
+        deleteAny,
+        deleteOrder,
+        deleteItem,
+        deleteDelivery,
+        deleteBranch,
+        deleteUser,
+        deleteWare
+      };
+      const helper = map[ep];
+      if (!helper) return;
+      const opts = {};
+      if (Object.keys(query || {}).length) opts.query = query;
+      await runHelper(helper, ep, opts);
+    });
+
+    document.getElementById('webSend').addEventListener('click', async () => {
+      const ep = document.getElementById('webEndpoint').value;
+      const query = safeParse(document.getElementById('webQuery').value, {});
+      const body = safeParse(document.getElementById('webBody').value, null);
+      const map = {
+        comicList,
+        commentList,
+        notificationList,
+        printGetById,
+        printGetByIdDelivery,
+        printReportDriverGeneral,
+        reportDriverExcel,
+        reportCustomerExcel,
+        reportWareSelect,
+        comicCreate,
+        commentCreate
+      };
+      const helper = map[ep];
+      if (!helper) return;
+      const opts = {};
+      if (Object.keys(query || {}).length) opts.query = query;
+      if (body !== null) opts.body = body;
+      await runHelper(helper, ep, opts);
     });
   </script>
 </body>
