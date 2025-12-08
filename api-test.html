@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebuuhia API Test Page</title>
+  <style>
+    :root {
+      font-family: Arial, sans-serif;
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    h1 {
+      margin: 0 0 8px 0;
+    }
+    section {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    }
+    .row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+      min-width: 160px;
+    }
+    input {
+      padding: 8px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+      min-width: 160px;
+    }
+    button {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 6px;
+      background: #2563eb;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 12px;
+      border-radius: 8px;
+      overflow: auto;
+      max-height: 360px;
+      font-size: 12px;
+    }
+    .notes {
+      font-size: 13px;
+      color: #475569;
+      margin: 8px 0 0 0;
+      line-height: 1.4;
+    }
+    .token {
+      font-family: monospace;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ebuuhia API Test Page</h1>
+    <p class="notes">
+      Minimal HTML tester for ebuuhia API calls. Uses client-side fetch against the live endpoints.
+      Set the base URL, log in to get a token, then fetch deliveries. Logout calls the two observed
+      endpoints from the captured traffic. Raw captures stay in <code>docs/captured-requests/</code>.
+    </p>
+  </header>
+
+  <section>
+    <h2>Setup</h2>
+    <div class="row">
+      <label>
+        Base URL (API root)
+        <input id="baseUrl" value="https://api.ebuuhia.mn/api/v1" />
+      </label>
+      <label>
+        Current token
+        <input id="tokenInput" placeholder="Will auto-fill after login" />
+      </label>
+      <button id="applyToken">Set token manually</button>
+    </div>
+    <p class="notes">
+      Captured requests show <code>Authorization</code> using the raw JWT (no <code>Bearer</code> prefix). If a call returns a
+      new token, it will replace the current one automatically.
+    </p>
+  </section>
+
+  <section>
+    <h2>Login</h2>
+    <div class="row">
+      <label>Email <input id="email" placeholder="email@example.com" /></label>
+      <label>Password <input id="password" type="password" placeholder="password" /></label>
+      <label>Device token (optional) <input id="deviceToken" placeholder="null" /></label>
+      <button id="loginBtn">Login</button>
+    </div>
+    <p class="notes">POST /login with JSON body. Response token is stored and shown below.</p>
+  </section>
+
+  <section>
+    <h2>Fetch deliveries</h2>
+    <div class="row">
+      <label>startLimit <input id="startLimit" value="0" /></label>
+      <label>endLimit <input id="endLimit" value="100" /></label>
+      <label>status <input id="status" value="100" /></label>
+      <label>id (customer) <input id="customerId" value="2015" /></label>
+      <label>order <input id="order" value="" /></label>
+      <label>sort <input id="sort" value="asc" /></label>
+      <label>search <input id="search" value="" /></label>
+      <label>value <input id="value" value="" /></label>
+      <label>action <input id="action" value="0" /></label>
+      <button id="deliveriesBtn">Get deliveries</button>
+    </div>
+    <p class="notes">GET /getDeliveryCustomer with the captured query params. Requires Authorization header set to the JWT.</p>
+  </section>
+
+  <section>
+    <h2>Logout (captured behavior)</h2>
+    <div class="row">
+      <button id="logoutBtn">Run logout calls</button>
+    </div>
+    <p class="notes">Runs GET /getComment and GET /getComic (captured sequence). These returned empty arrays in captures.</p>
+  </section>
+
+  <section>
+    <h2>Console</h2>
+    <pre id="logOutput">{ "info": "Logs and responses will appear here." }</pre>
+  </section>
+
+  <script>
+    const baseUrlInput = document.getElementById('baseUrl');
+    const tokenInput = document.getElementById('tokenInput');
+    const logOutput = document.getElementById('logOutput');
+    let currentToken = '';
+
+    const log = (label, data) => {
+      const entry = {
+        at: new Date().toISOString(),
+        label,
+        data
+      };
+      logOutput.textContent = `${entry.at} | ${entry.label}\n${JSON.stringify(entry.data, null, 2)}\n\n${logOutput.textContent}`;
+    };
+
+    const setToken = (token, source = 'setToken') => {
+      currentToken = token || '';
+      tokenInput.value = currentToken;
+      log(source, { token: currentToken });
+    };
+
+    document.getElementById('applyToken').addEventListener('click', () => {
+      setToken(tokenInput.value, 'manual token set');
+    });
+
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+      const base = baseUrlInput.value.replace(/\/$/, '');
+      const body = {
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+        device_token: document.getElementById('deviceToken').value || null
+      };
+      try {
+        const res = await fetch(`${base}/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json, text/plain, */*'
+          },
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        if (data && (data.token || (data.data && data.data.token))) {
+          setToken(data.token || data.data.token, 'login response token');
+        }
+        log('login response', { status: res.status, data });
+      } catch (err) {
+        log('login error', { error: err.message || err });
+      }
+    });
+
+    document.getElementById('deliveriesBtn').addEventListener('click', async () => {
+      if (!currentToken) {
+        log('deliveries error', { error: 'Set token first (login or manual).' });
+        return;
+      }
+      const base = baseUrlInput.value.replace(/\/$/, '');
+      const url = new URL(`${base}/getDeliveryCustomer`);
+      const params = {
+        startLimit: document.getElementById('startLimit').value,
+        endLimit: document.getElementById('endLimit').value,
+        order: document.getElementById('order').value,
+        sort: document.getElementById('sort').value,
+        search: document.getElementById('search').value,
+        value: document.getElementById('value').value,
+        status: document.getElementById('status').value,
+        id: document.getElementById('customerId').value,
+        action: document.getElementById('action').value
+      };
+      Object.entries(params).forEach(([key, val]) => url.searchParams.set(key, val));
+      try {
+        const res = await fetch(url.toString(), {
+          headers: {
+            Authorization: currentToken,
+            Accept: 'application/json, text/plain, */*'
+          }
+        });
+        const data = await res.json();
+        if (data && (data.token || (data.data && data.data.token))) {
+          setToken(data.token || data.data.token, 'deliveries response token');
+        }
+        log('deliveries response', { status: res.status, data });
+      } catch (err) {
+        log('deliveries error', { error: err.message || err });
+      }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      const base = baseUrlInput.value.replace(/\/$/, '');
+      const endpoints = ['getComment', 'getComic'];
+      for (const ep of endpoints) {
+        try {
+          const res = await fetch(`${base}/${ep}`, {
+            headers: {
+              Accept: 'application/json, text/plain, */*'
+            }
+          });
+          const data = await res.json();
+          log(`${ep} response`, { status: res.status, data });
+        } catch (err) {
+          log(`${ep} error`, { error: err.message || err });
+        }
+      }
+    });
+  </script>
+</body>
+</html>

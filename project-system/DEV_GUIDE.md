@@ -37,19 +37,45 @@ project-system/CHAT_INIT.md
 
 ## Important paths & files
 
-### `/ai-os/` — AI Project OS
+### `/ai-os/` - AI Project OS
 
 This folder contains:
 
-- `ai-rules.md` – how the AI must behave
-- `ai-context.md` – what this project is
-- `ai-workflows.md` – how to perform typical tasks
-- `ai-roadmap.md` – future direction
-- `OS_SUMMARY.md` – OS overview (for humans)
-- `PROJECT_SUMMARY.md` – project overview (for humans)
+- `ai-rules.md` - how the AI must behave
+- `ai-context.md` - what this project is
+- `ai-workflows.md` - how to perform typical tasks
+- `ai-roadmap.md` - future direction
+- `OS_SUMMARY.md` - OS overview (for humans, derived from the OS)
+- `PROJECT_SUMMARY.md` - project overview (for humans, derived from the OS)
+ - `ai-os-schema.md` - schema for how OS files are structured
+ - `ai-os-changelog.md` - short history of OS-level changes
 
-These files are the **source of truth** for AI behavior.
-They are generated and updated over time as the project evolves.
+The **source of truth** for AI behavior and project definition lives in the core OS files:
+
+- `ai-rules.md`
+- `ai-context.md`
+- `ai-workflows.md`
+- `ai-roadmap.md`
+
+The two summaries are **caches** of that state, intended for fast human and AI orientation.
+
+If you are changing how the OS itself is structured or behaves (rules, workflows, or OS files), you should also skim `ai-os-schema.md` and `ai-os-changelog.md` so that changes stay consistent with the schema and are properly logged.
+
+---
+
+## Commands you need to know
+
+- `read chat.md` - initialise a new AI chat with the Project OS loaded.
+- `chat resync` - reload the OS files in `/ai-os/` during an ongoing chat while keeping the current task.
+- `update summaries` - when summaries feel stale or the OS has changed, ask the AI to bring `OS_SUMMARY.md` and `PROJECT_SUMMARY.md` back in sync with the core OS files.
+
+If you are joining an existing project mid-stream:
+
+- attach the repository in your AI tool,
+- run `read chat.md`,
+- then skim `/ai-os/PROJECT_SUMMARY.md` followed by `/ai-os/OS_SUMMARY.md`.
+
+This is usually enough to get oriented.
 
 ---
 
@@ -181,14 +207,15 @@ If any of the following change:
 
 Then, whoever made the change should:
 
-1. Update the relevant file(s) in `/ai-os/`.
-2. Update **both**:
+1. Update the relevant core OS file(s) in `/ai-os/`.
+2. In an AI chat for this repo, ask the AI to **refresh the summaries** (for example by saying `update summaries`) so that:
    - `OS_SUMMARY.md`
    - `PROJECT_SUMMARY.md`
+   are brought back in line with the current OS.
 
 These summaries are designed so that any human or AI can understand the project in **under 2 minutes**.
 
-If the summaries and OS files ever disagree, assume the OS files are more precise and the summaries are stale.
+If the summaries and OS files ever disagree, assume the core OS files are authoritative and the summaries are stale. You can always ask the AI to refresh them.
 
 ---
 
@@ -234,7 +261,7 @@ Until `CHAT_INIT.md` exists and is readable, the system cannot safely initialize
 
 ### 3. `/ai-os/` or core OS files are missing
 
-If `/ai-os/` or core files like `ai-rules.md`, `ai-context.md`, `OS_SUMMARY.md`, or `PROJECT_SUMMARY.md` are missing:
+If `/ai-os/` or core OS files like `ai-rules.md`, `ai-context.md`, `ai-workflows.md`, `ai-roadmap.md`, `ai-os-schema.md`, or any additional OS files created for this project are missing:
 
 - The AI will warn you and treat the OS as degraded.
 - You should either:
@@ -242,6 +269,16 @@ If `/ai-os/` or core files like `ai-rules.md`, `ai-context.md`, `OS_SUMMARY.md`,
   - explicitly instruct the AI to help regenerate the missing pieces.
 
 The AI must **not** silently guess or invent the previous OS.
+
+### 4. System files look corrupted or inconsistent
+
+If the AI reports that OS or system files exist but appear corrupted, structurally invalid, or inconsistent with each other (for example, missing required sections or rules that contradict each other):
+
+- treat the OS as being in a degraded state,
+- review recent changes or diffs and restore known-good versions from version control where possible,
+- or explicitly ask the AI to help regenerate specific files, with your approval.
+
+The AI must not guess what the previous rules or context were based only on memory. It should warn and wait for your direction.
 
 ---
 

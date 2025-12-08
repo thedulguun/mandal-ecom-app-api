@@ -18,6 +18,8 @@ When instructed to “Read `project-system/CHAT_INIT.md` and follow it”, you m
    - `/ai-os/ai-context.md`
    - `/ai-os/ai-workflows.md`
    - `/ai-os/ai-roadmap.md`
+   - `/ai-os/ai-os-schema.md`
+   - `/ai-os/ai-os-changelog.md`
    - `/ai-os/OS_SUMMARY.md`
    - `/ai-os/PROJECT_SUMMARY.md`
 
@@ -28,9 +30,11 @@ When instructed to “Read `project-system/CHAT_INIT.md` and follow it”, you m
    - how the OS is structured
    - what constraints and goals matter most
 
-4. Follow any additional instructions in those files strictly.
+   Treat these summaries as **derived caches** of the core OS files (`ai-rules.md`, `ai-context.md`, `ai-workflows.md`, `ai-roadmap.md`), not as the ultimate source of truth. If you detect inconsistencies between summaries and core OS files, prefer the core OS files and, when appropriate, offer to refresh the summaries (for example when the user says `update summaries`).
 
-If any of these files are missing or unreadable, you must behave according to the **system integrity rules** defined in `ai-rules.md` (warning the user, not silently repairing).
+4. Follow any additional instructions in those files strictly, as long as they do not conflict with `ai-rules.md`.
+
+If any of these files are missing or unreadable, you must behave according to the **system integrity rules** defined in `ai-rules.md` (warning the user, not silently repairing). Where relevant, you may use `ai-os-schema.md` to detect obvious structural problems and `ai-os-changelog.md` or any OS version metadata to spot unlogged OS changes, but you must still prioritise clarity and explicit user approval over automatic repair.
 
 ---
 
@@ -44,7 +48,7 @@ chat resync
 
 When this happens, you must:
 
-1. Re‑read the OS files listed above from `/ai-os/`.
+1. Re-read the OS files listed above from `/ai-os/`.
 2. Re‑align your behavior with the current OS state.
 3. Respond with a **short message** that:
    - confirms you have re‑synced with the OS
@@ -57,11 +61,29 @@ You must **not**:
 - treat it as a command to reset the conversation
 - change tasks unless explicitly requested
 
-`chat resync` means: *“reload the OS, keep the mission.”*
+`chat resync` means: *"reload the OS, keep the mission."*
 
 ---
 
-## 3. Required response immediately after boot
+## 3. Optional command: `update summaries`
+
+During an ongoing chat, the user may also say something like:
+
+```text
+update summaries
+```
+
+When this happens, you must:
+
+1. Re-read the core OS files in `/ai-os/` (at minimum `ai-rules.md`, `ai-context.md`, `ai-workflows.md`, `ai-roadmap.md`).
+2. Bring `OS_SUMMARY.md` and `PROJECT_SUMMARY.md` back in line with the current OS, preferring small, focused edits when possible but updating more aggressively if the summaries are very stale or inconsistent.
+3. Briefly confirm that the summaries have been refreshed.
+
+You must not ignore this request, and you must not treat it as permission to change the underlying OS rules or context without explicit discussion.
+
+---
+
+## 4. Required response immediately after boot
 
 Right after you process this `CHAT_INIT.md` and load the OS for a **new chat session**, your next message to the user must be:
 
@@ -80,7 +102,7 @@ You must **not**:
 
 ---
 
-## 4. If something is wrong
+## 5. If something is wrong
 
 If, during or after boot, you detect:
 
