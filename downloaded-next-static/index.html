@@ -1,0 +1,936 @@
+<html lang="en" data-mantine-color-scheme="light" style="">
+
+<head>
+    <meta charset="utf-8">
+    <title>EBuuhia</title>
+    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width">
+    <link rel="icon" href="/logo.svg?v=1.1">
+    <meta name="next-head-count" content="4">
+    <script data-mantine-script="true">
+        try {
+            var _colorScheme = window.localStorage.getItem("mantine-color-scheme-value");
+            var colorScheme = _colorScheme === "light" || _colorScheme === "dark" || _colorScheme === "auto" ?
+                _colorScheme : "auto";
+            var computedColorScheme = colorScheme !== "auto" ? colorScheme : window.matchMedia(
+                "(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            document.documentElement.setAttribute("data-mantine-color-scheme", computedColorScheme);
+        } catch (e) {}
+    </script>
+    <link rel="preload" href="/_next/static/css/861632ac24b1c648.css" as="style" crossorigin="">
+    <link rel="stylesheet" href="/_next/static/css/861632ac24b1c648.css" crossorigin="" data-n-g=""><noscript
+        data-n-css=""></noscript>
+    <script defer="" crossorigin="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script>
+    <script src="/_next/static/chunks/webpack-6fbd5a097ca8c076.js" defer="" crossorigin=""></script>
+    <script src="/_next/static/chunks/framework-ca706bf673a13738.js" defer="" crossorigin=""></script>
+    <script src="/_next/static/chunks/main-bfb0898be128642b.js" defer="" crossorigin=""></script>
+    <script src="/_next/static/chunks/pages/_app-3b2f4c27762ff4aa.js" defer="" crossorigin=""></script>
+    <script src="/_next/static/chunks/5471-fe61870c7fea235c.js" defer="" crossorigin=""></script>
+    <script src="/_next/static/chunks/pages/index-b85806c02dc35e68.js" defer="" crossorigin=""></script>
+    <script src="/_next/static/t7IPV9DpjUgXPvYfTlo5E/_buildManifest.js" defer="" crossorigin=""></script>
+    <script src="/_next/static/t7IPV9DpjUgXPvYfTlo5E/_ssgManifest.js" defer="" crossorigin=""></script>
+    <style type="text/css">
+        .resize-observer[data-v-8859cc6c] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: transparent;
+            pointer-events: none;
+            display: block;
+            overflow: hidden;
+            opacity: 0
+        }
+
+        .resize-observer[data-v-8859cc6c] object {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1
+        }
+    </style>
+    <style type="text/css">
+        x-vue-echarts {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            min-width: 0
+        }
+
+        .vue-echarts-inner {
+            flex-grow: 1;
+            min-width: 0;
+            width: auto !important;
+            height: auto !important
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/_next/static/css/259791888b6d1b93.css">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/pages/ware-a2733b7996c210e0.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/pages/delivery/create-ff8f8929f24bc7eb.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/6616-5754ec7699239939.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/2587-ae376a50b1655fd5.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/448-9b7e05fdb2246cd2.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/310-9759794c4fc40fef.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/671-875419c0ea17bd34.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/2464-a8fa8400dcdf6a5a.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/6148-e830d5f6e72dc33f.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/9142-f696f30a328a55f5.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/4864-4fbb6db43e6d76e9.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/8052-c9149479089c8882.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/pages/delivery-2d252d6d53a00d0b.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/pages/delivery/report-2c738688db6b3ee7.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/pages/deliveryAddittion-da9c8df853878b3c.js">
+    <link as="script" rel="prefetch" href="/_next/static/chunks/pages/deliveryAddittion/report-95e747c679a96f25.js">
+</head>
+
+<body ap-style="">
+    <div id="__next">
+        <style data-mantine-styles="classes">
+            @media (max-width: 35.99375em) {
+                .mantine-visible-from-xs {
+                    display: none !important;
+                }
+            }
+
+            @media (min-width: 36em) {
+                .mantine-hidden-from-xs {
+                    display: none !important;
+                }
+            }
+
+            @media (max-width: 47.99375em) {
+                .mantine-visible-from-sm {
+                    display: none !important;
+                }
+            }
+
+            @media (min-width: 48em) {
+                .mantine-hidden-from-sm {
+                    display: none !important;
+                }
+            }
+
+            @media (max-width: 61.99375em) {
+                .mantine-visible-from-md {
+                    display: none !important;
+                }
+            }
+
+            @media (min-width: 62em) {
+                .mantine-hidden-from-md {
+                    display: none !important;
+                }
+            }
+
+            @media (max-width: 74.99375em) {
+                .mantine-visible-from-lg {
+                    display: none !important;
+                }
+            }
+
+            @media (min-width: 75em) {
+                .mantine-hidden-from-lg {
+                    display: none !important;
+                }
+            }
+
+            @media (max-width: 87.99375em) {
+                .mantine-visible-from-xl {
+                    display: none !important;
+                }
+            }
+
+            @media (min-width: 88em) {
+                .mantine-hidden-from-xl {
+                    display: none !important;
+                }
+            }
+        </style>
+        <style data-mantine-styles="inline">
+            :root {
+                --app-shell-navbar-width: calc(17.375rem * var(--mantine-scale));
+                --app-shell-navbar-offset: calc(17.375rem * var(--mantine-scale));
+                --app-shell-header-height: calc(4.375rem * var(--mantine-scale));
+                --app-shell-header-offset: calc(4.375rem * var(--mantine-scale));
+                --app-shell-padding: 0px;
+            }
+
+            @media(max-width: 47.99375em) {
+                :root {
+                    --app-shell-navbar-width: 100%;
+                    --app-shell-navbar-offset: 0px;
+                    --app-shell-navbar-transform: translateX(calc(var(--app-shell-navbar-width) * -1));
+                    --app-shell-navbar-transform-rtl: translateX(var(--app-shell-navbar-width));
+                }
+            }
+        </style>
+        <div class="m-89ab340 mantine-AppShell-root"
+            style="--app-shell-transition-duration: 200ms; --app-shell-transition-timing-function: ease;">
+            <header class="m-3b16f56b mantine-AppShell-header right-scroll-bar-position"
+                style="align-items: center; justify-content: space-between; --app-shell-header-z-index: 100; display: flex;">
+                <button
+                    class="mantine-focus-auto m-fea6bf1a mantine-Burger-root m-87cf2631 mantine-UnstyledButton-root mantine-hidden-from-sm"
+                    data-size="sm" type="button" style="--burger-size: var(--burger-size-sm);">
+                    <div class="m-d4fb9cad mantine-Burger-burger" data-reduce-motion="true"></div>
+                </button><a href="/dashboard">
+                    <div class="" style="display: flex; align-items: center; margin-left: 30px;"><img src="/logo.svg"
+                            class="md:block hidden h-14" alt="logo">
+                        <h1 class="md:block hidden" style="padding-left: 18px; font-size: 18px; font-weight: 800;">
+                            Буухиа элч</h1>
+                    </div>
+                </a>
+                <div class="flex items-center relative">
+                    <div class="flex items-end">
+                        <div class="relative"><img src="/icons/notification-icon.png" alt="notification"
+                                class="cursor-pointer border border-indigo-300 rounded-lg p-1 w-[34px] mr-4"></div>
+                        <div class="absolute top-[58px] right-0 h-screen border-l border-l-[#6A5ADF] overflow-scroll bg-[#F1F4FD] w-96 px-4 duration-500 transition-transform translate-x-full"
+                            aria-hidden="true"
+                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                            <div style="opacity: 0; transition: opacity 200ms;">
+                                <div class="flex flex-col justify-start items-center">
+                                    <div class="z-40 w-1/2 m-3eebeb36 mantine-Divider-root"
+                                        data-orientation="horizontal" data-with-label="true" role="separator"
+                                        style="--divider-color: var(--mantine-color-black); margin-top: var(--mantine-spacing-xl); margin-bottom: var(--mantine-spacing-xl);">
+                                        <span class="m-9e365f20 mantine-Divider-label"
+                                            data-position="center">Мэдэгдэл</span></div>
+                                    <div class="flex flex-col items-center justify-center h-60"><img
+                                            src="/icons/no-data.svg" width="100" alt="icon">
+                                        <p class="text-indigo-500 font-semibold">Илэрц олдсонгүй</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center relative"><img src="/user.png" alt="image" height="48" width="48"
+                            class="rounded-full border-2 border-[#6A5ADF]">
+                        <div class="ml-4">
+                            <p class="text-[13px] text-[#6A5ADF] truncate w-20">Мандал онлайн шоп1</p>
+                            <p class="text-[13px]">customer</p>
+                        </div><img src="/icons/arrow-down.svg" alt="arrow" class="mx-6 cursor-pointer">
+                    </div>
+                </div>
+            </header>
+            <nav class="m-45252eee mantine-AppShell-navbar"
+                style="--app-shell-navbar-z-index: calc(100 + 1); background: rgb(106, 90, 223);">
+                <div class="m-d57069b5 mantine-ScrollArea-root"
+                    style="--scrollarea-scrollbar-size: calc(0.375rem * var(--mantine-scale)); --sa-corner-width: 0px; --sa-corner-height: 0px; height: 100vh;">
+                    <div class="m-c0783ff9 mantine-ScrollArea-viewport" style="overflow: scroll;">
+                        <div style="min-width: 100%; display: table;">
+                            <div class="m-5">
+                                <div class=""><a
+                                        class="relative flex justify-start cursor-pointer pl-4 items-center mb-[12px] h-[48px] rounded-xl bg-[#FFFFFF66] "
+                                        href="/dashboard"><img src="/icons/menu-1.svg" alt="icon" height="20" width="20"
+                                            class="mr-[18px]">
+                                        <h1 class="text-white text-[14px] font-bold">Хянах самбар</h1>
+                                    </a>
+                                    <div class=""></div>
+                                </div>
+                                <div class=""><a
+                                        class="relative flex justify-start cursor-pointer pl-4 items-center mb-[12px] h-[48px]  "
+                                        href="/dashboard"><img src="/icons/menu-2.svg" alt="icon" height="20" width="20"
+                                            class="mr-[18px]">
+                                        <h1 class="text-white text-[14px] false">Захиалгын цэс</h1><img
+                                            src="/icons/drop-down.svg" alt="dropup" height="24" width="24"
+                                            class="absolute right-2 transition duration-700 ease-in-out">
+                                    </a>
+                                    <div class="">
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/order/create"><img src="/icons/menu2.1.svg" alt="icon"
+                                                        height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Захиалга үүсгэх</h1>
+                                                </a></div>
+                                        </div>
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/order"><img src="/icons/menu2.2.svg" alt="icon" height="20"
+                                                        width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Захиалгын жагсаалт</h1>
+                                                </a></div>
+                                        </div>
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/order/report"><img src="/icons/menu2.5.svg" alt="icon"
+                                                        height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Тайлан захиалгаар</h1>
+                                                </a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=""><a
+                                        class="relative flex justify-start cursor-pointer pl-4 items-center mb-[12px] h-[48px]  "
+                                        href="/dashboard"><img src="/icons/menu-3.svg" alt="icon" height="20" width="20"
+                                            class="mr-[18px]">
+                                        <h1 class="text-white text-[14px] false">Хүргэлтийн цэс</h1><img
+                                            src="/icons/drop-down.svg" alt="dropup" height="24" width="24"
+                                            class="absolute right-2 transition duration-700 ease-in-out">
+                                    </a>
+                                    <div class="">
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/delivery/create"><img src="/icons/menu3.1.svg" alt="icon"
+                                                        height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Хүргэлт үүсгэх</h1>
+                                                </a></div>
+                                        </div>
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/delivery"><img src="/icons/menu3.2.svg" alt="icon"
+                                                        height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Шинэ хүргэлт</h1>
+                                                </a></div>
+                                        </div>
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/delivery/report"><img src="/icons/menu3.8.svg" alt="icon"
+                                                        height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Тайлан хүргэлтээр</h1>
+                                                </a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=""><a
+                                        class="relative flex justify-start cursor-pointer pl-4 items-center mb-[12px] h-[48px]  bg-[#FFFFFF66] rounded-t-xl"
+                                        href="/dashboard"><img src="/icons/menu-3.svg" alt="icon" height="20" width="20"
+                                            class="mr-[18px]">
+                                        <h1 class="text-white text-[14px] false">Нэмэлт хүргэлт</h1><img
+                                            src="/icons/arrow-up.svg" alt="dropdown" height="24" width="24"
+                                            class="absolute right-2 transition duration-700 ease-in-out">
+                                    </a>
+                                    <div class="rounded-b-xl bg-[#FFFFFF66] mt-[-12px]">
+                                        <div class="" aria-hidden="false" style="box-sizing: border-box;">
+                                            <div style="opacity: 1; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/deliveryAddittion"><img src="/icons/menu3.2.svg" alt="icon"
+                                                        height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Шинэ хүргэлт</h1>
+                                                </a></div>
+                                        </div>
+                                        <div class="" aria-hidden="false" style="box-sizing: border-box;">
+                                            <div style="opacity: 1; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/deliveryAddittion/report"><img src="/icons/menu3.8.svg"
+                                                        alt="icon" height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Тайлан хүргэлтээр</h1>
+                                                </a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=""><a
+                                        class="relative flex justify-start cursor-pointer pl-4 items-center mb-[12px] h-[48px]  "
+                                        href="/dashboard"><img src="/icons/menu-8.svg" alt="icon" height="20" width="20"
+                                            class="mr-[18px]">
+                                        <h1 class="text-white text-[14px] false">Тайлан</h1><img
+                                            src="/icons/drop-down.svg" alt="dropup" height="24" width="24"
+                                            class="absolute right-2 transition duration-700 ease-in-out">
+                                    </a>
+                                    <div class="">
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/report/customer"><img src="/icons/menu2.1.svg" alt="icon"
+                                                        height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Харилцагчийн тайлан</h1>
+                                                </a></div>
+                                        </div>
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/report/customerDone"><img src="/icons/menu2.1.svg" alt="icon"
+                                                        height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Харилцагчийн нийлсэн тайлан</h1>
+                                                </a></div>
+                                        </div>
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/report"><img src="/icons/menu2.1.svg" alt="icon" height="20"
+                                                        width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Харилцагчийн ерөнхий тайлан</h1>
+                                                </a></div>
+                                        </div>
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/report/ware"><img src="/icons/menu2.1.svg" alt="icon"
+                                                        height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Агуулахын тайлан</h1>
+                                                </a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=""><a
+                                        class="relative flex justify-start cursor-pointer pl-4 items-center mb-[12px] h-[48px]  "
+                                        href="/dashboard"><img src="/icons/menu-6.svg" alt="icon" height="20" width="20"
+                                            class="mr-[18px]">
+                                        <h1 class="text-white text-[14px] false">Барааны цэс</h1><img
+                                            src="/icons/drop-down.svg" alt="dropup" height="24" width="24"
+                                            class="absolute right-2 transition duration-700 ease-in-out">
+                                    </a>
+                                    <div class="">
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/item/create"><img src="/icons/menu6.1.svg" alt="icon"
+                                                        height="20" width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Бараа үүсгэх</h1>
+                                                </a></div>
+                                        </div>
+                                        <div class="" aria-hidden="true"
+                                            style="box-sizing: border-box; display: none; height: 0px; overflow: hidden;">
+                                            <div style="opacity: 0; transition: opacity 200ms;"><a
+                                                    class="flex justify-start items-center ml-4 mb-[12px] h-[48px] cursor-pointer relative"
+                                                    href="/item"><img src="/icons/menu6.1.svg" alt="icon" height="20"
+                                                        width="20" class="mr-[24px]">
+                                                    <h1 class="text-white text-[14px] ">Барааны жагсаалт</h1>
+                                                </a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=""><a
+                                        class="relative flex justify-start cursor-pointer pl-4 items-center mb-[12px] h-[48px]  "
+                                        href="/ware"><img src="/icons/menu-11.svg" alt="icon" height="20" width="20"
+                                            class="mr-[18px]">
+                                        <h1 class="text-white text-[14px] false">Агуулах</h1>
+                                    </a>
+                                    <div class=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-orientation="horizontal" data-state="hidden"
+                        class="m-c44ba933 mantine-ScrollArea-scrollbar"
+                        style="position: absolute; --sa-thumb-width: 18px;"></div>
+                    <div data-state="hidden" class="m-c44ba933 mantine-ScrollArea-scrollbar" data-orientation="vertical"
+                        style="position: absolute; --sa-thumb-height: 18px;"></div>
+                </div>
+                <div class="flex items-center justify-between h-[48px] bg-white px-4">
+                    <p class="text-[#6A5ADF] text-sm">Developed by <strong>Edtech</strong></p>
+                    <p class="text-[#6A5ADF] text-sm">v2.2.0</p>
+                </div>
+            </nav>
+            <main class="m-8983817 mantine-AppShell-main" style="background: rgb(248, 249, 250);">
+                <div class="p-4 w-full">
+                    <div class="grid md:grid-cols-3 grid-cols-1 gap-4">
+                        <div class="col-span-2 flex flex-col gap-4">
+                            <div
+                                class="justify-between p-4 items-center h-[140px] bg-white rounded-xl border border-slate-100 md:flex hidden">
+                                <div class="">
+                                    <h1 class="text-indigo-600 font-bold text-xl mb-2">Сайн байна уу! saraa</h1>
+                                    <p class="text-sm">Танд энэ өдрийн мэндийг хүргэе! манай Буухиа элч хүргэлтийн
+                                        системийг өөрийн бизнестээ ашиглаж байгаад баярлалаа</p>
+                                </div><img src="/icons/dashboard.svg" alt="dashboard" class="mt-[-25px]">
+                            </div>
+                            <div class="grid md:grid-cols-2 grid-cols-1 gap-4">
+                                <div class="h-auto bg-white text-sm rounded-xl border border-slate-100 p-5">
+                                    <h1 class="font-semibold mb-4">Сүүлийн тайлангууд</h1>
+                                    <div class="grid grid-cols-3 text-indigo-500 sticky top-0 text-sm">
+                                        <p class="flex justify-start">Дүн</p>
+                                        <p class="flex justify-center">Хүргэлт үнэ</p>
+                                        <p class="flex justify-end">Зөрүү</p>
+                                    </div>
+                                    <div class="border-b w-full mt-2 mb-1"></div>
+                                    <div class="overflow-y-scroll xl:h-[300px] 2xl:h-[350px]">
+                                        <div>
+                                            <div class="grid grid-cols-3 text-sm pt-2">
+                                                <div class="flex flex-col justify-start gap-2">
+                                                    <p class="text-xs">2025/12/02 02:28</p>
+                                                    <p>₮345,000</p>
+                                                </div>
+                                                <div class="flex justify-center">₮30,000</div>
+                                                <div class="flex flex-col gap-2 justify-end">
+                                                    <p class="font-bold flex justify-end">₮315,000</p>
+                                                    <p class=" text-xs flex justify-end ">
+                                                        <p class="text-red-600">Төлбөр шилжээгүй</p>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="border-b border-indigo-500 w-full mt-3 mb-1"></div>
+                                        </div>
+                                        <div>
+                                            <div class="grid grid-cols-3 text-sm pt-2">
+                                                <div class="flex flex-col justify-start gap-2">
+                                                    <p class="text-xs">2025/07/02 14:00</p>
+                                                    <p>₮69,500</p>
+                                                </div>
+                                                <div class="flex justify-center">₮102,000</div>
+                                                <div class="flex flex-col gap-2 justify-end">
+                                                    <p class="font-bold flex justify-end">₮-32,500</p>
+                                                    <p class=" text-xs flex justify-end ">
+                                                        <p class="text-red-600">Төлбөр шилжээгүй</p>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="border-b border-indigo-500 w-full mt-3 mb-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="h-auto bg-white rounded-xl border border-slate-100 p-4">
+                                    <h1 class="font-semibold text-sm mb-8">Хүргэлтийн график</h1>
+                                    <div class="m_a50f3e58 mantine-BarChart-root" dir="ltr"
+                                        style="height: calc(18.75rem * var(--mantine-scale));">
+                                        <div class="recharts-responsive-container m_af9188cb mantine-BarChart-container"
+                                            style="width: 100%; height: 100%; min-width: 0px;">
+                                            <div class="recharts-wrapper"
+                                                style="position: relative; cursor: default; width: 100%; height: 100%; max-height: 300px; max-width: 153px;">
+                                                <svg class="recharts-surface" width="153" height="300"
+                                                    viewBox="0 0 153 300" style="width: 100%; height: 100%;">
+                                                    <title></title>
+                                                    <desc></desc>
+                                                    <defs>
+                                                        <clipPath id="recharts125-clip">
+                                                            <rect x="60" y="0" height="270" width="93"></rect>
+                                                        </clipPath>
+                                                    </defs>
+                                                    <g
+                                                        class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis m_a507a517 mantine-BarChart-axis">
+                                                        <line stroke="" class="recharts-cartesian-axis-line"
+                                                            orientation="bottom" width="93" height="30" x="60" y="270"
+                                                            fill="none" x1="60" y1="270" x2="153" y2="270"></line>
+                                                        <g class="recharts-cartesian-axis-ticks">
+                                                            <g class="recharts-layer recharts-cartesian-axis-tick"><text
+                                                                    stroke="none" orientation="bottom" width="93"
+                                                                    height="30" transform="translate(0, 10)"
+                                                                    font-size="12" x="106.5" y="278"
+                                                                    class="recharts-text recharts-cartesian-axis-tick-value"
+                                                                    text-anchor="middle" fill="currentColor">
+                                                                    <tspan x="106.5" dy="0.71em">2025-11</tspan>
+                                                                </text></g>
+                                                        </g>
+                                                    </g>
+                                                    <g
+                                                        class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis m_a507a517 mantine-BarChart-axis">
+                                                        <g class="recharts-cartesian-axis-ticks">
+                                                            <g class="recharts-layer recharts-cartesian-axis-tick">
+                                                                <line class="recharts-cartesian-axis-tick-line"
+                                                                    orientation="left" width="60" height="270" x="0"
+                                                                    y="0" stroke="currentColor" fill="none" x1="54"
+                                                                    y1="270" x2="60" y2="270"></line><text
+                                                                    orientation="left" width="60" height="270"
+                                                                    stroke="none" transform="translate(-10, 0)"
+                                                                    font-size="12" x="52" y="270"
+                                                                    class="recharts-text recharts-cartesian-axis-tick-value"
+                                                                    text-anchor="end" fill="currentColor">
+                                                                    <tspan x="52" dy="0.355em">0</tspan>
+                                                                </text>
+                                                            </g>
+                                                            <g class="recharts-layer recharts-cartesian-axis-tick">
+                                                                <line class="recharts-cartesian-axis-tick-line"
+                                                                    orientation="left" width="60" height="270" x="0"
+                                                                    y="0" stroke="currentColor" fill="none" x1="54"
+                                                                    y1="202.5" x2="60" y2="202.5"></line><text
+                                                                    orientation="left" width="60" height="270"
+                                                                    stroke="none" transform="translate(-10, 0)"
+                                                                    font-size="12" x="52" y="202.5"
+                                                                    class="recharts-text recharts-cartesian-axis-tick-value"
+                                                                    text-anchor="end" fill="currentColor">
+                                                                    <tspan x="52" dy="0.355em">2</tspan>
+                                                                </text>
+                                                            </g>
+                                                            <g class="recharts-layer recharts-cartesian-axis-tick">
+                                                                <line class="recharts-cartesian-axis-tick-line"
+                                                                    orientation="left" width="60" height="270" x="0"
+                                                                    y="0" stroke="currentColor" fill="none" x1="54"
+                                                                    y1="135" x2="60" y2="135"></line><text
+                                                                    orientation="left" width="60" height="270"
+                                                                    stroke="none" transform="translate(-10, 0)"
+                                                                    font-size="12" x="52" y="135"
+                                                                    class="recharts-text recharts-cartesian-axis-tick-value"
+                                                                    text-anchor="end" fill="currentColor">
+                                                                    <tspan x="52" dy="0.355em">4</tspan>
+                                                                </text>
+                                                            </g>
+                                                            <g class="recharts-layer recharts-cartesian-axis-tick">
+                                                                <line class="recharts-cartesian-axis-tick-line"
+                                                                    orientation="left" width="60" height="270" x="0"
+                                                                    y="0" stroke="currentColor" fill="none" x1="54"
+                                                                    y1="67.5" x2="60" y2="67.5"></line><text
+                                                                    orientation="left" width="60" height="270"
+                                                                    stroke="none" transform="translate(-10, 0)"
+                                                                    font-size="12" x="52" y="67.5"
+                                                                    class="recharts-text recharts-cartesian-axis-tick-value"
+                                                                    text-anchor="end" fill="currentColor">
+                                                                    <tspan x="52" dy="0.355em">6</tspan>
+                                                                </text>
+                                                            </g>
+                                                            <g class="recharts-layer recharts-cartesian-axis-tick">
+                                                                <line class="recharts-cartesian-axis-tick-line"
+                                                                    orientation="left" width="60" height="270" x="0"
+                                                                    y="0" stroke="currentColor" fill="none" x1="54"
+                                                                    y1="0" x2="60" y2="0"></line><text
+                                                                    orientation="left" width="60" height="270"
+                                                                    stroke="none" transform="translate(-10, 0)"
+                                                                    font-size="12" x="52" y="12.3984375"
+                                                                    class="recharts-text recharts-cartesian-axis-tick-value"
+                                                                    text-anchor="end" fill="currentColor">
+                                                                    <tspan x="52" dy="0.355em">8</tspan>
+                                                                </text>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                    <g class="recharts-cartesian-grid">
+                                                        <g class="recharts-cartesian-grid-horizontal">
+                                                            <line stroke-dasharray="5 5"
+                                                                class="m_a50a48bc mantine-BarChart-grid" stroke="#ccc"
+                                                                fill="none" x="60" y="0" width="93" height="270" x1="60"
+                                                                y1="270" x2="153" y2="270"></line>
+                                                            <line stroke-dasharray="5 5"
+                                                                class="m_a50a48bc mantine-BarChart-grid" stroke="#ccc"
+                                                                fill="none" x="60" y="0" width="93" height="270" x1="60"
+                                                                y1="202.5" x2="153" y2="202.5"></line>
+                                                            <line stroke-dasharray="5 5"
+                                                                class="m_a50a48bc mantine-BarChart-grid" stroke="#ccc"
+                                                                fill="none" x="60" y="0" width="93" height="270" x1="60"
+                                                                y1="135" x2="153" y2="135"></line>
+                                                            <line stroke-dasharray="5 5"
+                                                                class="m_a50a48bc mantine-BarChart-grid" stroke="#ccc"
+                                                                fill="none" x="60" y="0" width="93" height="270" x1="60"
+                                                                y1="67.5" x2="153" y2="67.5"></line>
+                                                            <line stroke-dasharray="5 5"
+                                                                class="m_a50a48bc mantine-BarChart-grid" stroke="#ccc"
+                                                                fill="none" x="60" y="0" width="93" height="270" x1="60"
+                                                                y1="0" x2="153" y2="0"></line>
+                                                        </g>
+                                                    </g>
+                                                    <g class="recharts-layer recharts-bar mantine-BarChart-bar">
+                                                        <g class="recharts-layer recharts-bar-rectangles">
+                                                            <g class="recharts-layer recharts-bar-rectangle">
+                                                                <path x="69.3" y="101.25" width="22" height="168.75"
+                                                                    radius="0"
+                                                                    class="recharts-rectangle mantine-BarChart-bar"
+                                                                    name="Хүргэгдсэн"
+                                                                    fill="var(--mantine-color-violet-6)"
+                                                                    stroke="var(--mantine-color-violet-6)"
+                                                                    fill-opacity="1" stroke-opacity="0"
+                                                                    d="M 69.3,101.25 h 22 v 168.75 h -22 Z"></path>
+                                                            </g>
+                                                        </g>
+                                                        <g class="recharts-layer"></g>
+                                                    </g>
+                                                    <g class="recharts-layer recharts-bar mantine-BarChart-bar">
+                                                        <g class="recharts-layer recharts-bar-rectangles">
+                                                            <g class="recharts-layer recharts-bar-rectangle"></g>
+                                                        </g>
+                                                        <g class="recharts-layer"></g>
+                                                    </g>
+                                                    <g class="recharts-layer recharts-bar mantine-BarChart-bar">
+                                                        <g class="recharts-layer recharts-bar-rectangles">
+                                                            <g class="recharts-layer recharts-bar-rectangle"></g>
+                                                        </g>
+                                                        <g class="recharts-layer"></g>
+                                                    </g>
+                                                </svg>
+                                                <div tabindex="-1"
+                                                    class="recharts-tooltip-wrapper recharts-tooltip-wrapper-left recharts-tooltip-wrapper-top"
+                                                    style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px; transform: translate(60px, 0px);">
+                                                    <div class="m_e4d36c9b mantine-ChartTooltip-tooltip"
+                                                        data-type="area">
+                                                        <div class="m_7f4bcb19 mantine-ChartTooltip-tooltipLabel">
+                                                            2025-11</div>
+                                                        <div class="m_3de554dd mantine-ChartTooltip-tooltipBody"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="font-semibold text-sm">Та манай системийг ашиглан нийт</h1>
+                            <div class="flex items-start sm:gap-4 gap-1">
+                                <div
+                                    class="flex items-center gap-4 bg-white h-24 rounded-xl border border-slate-100 p-4 w-1/3">
+                                    <div class="flex justify-center items-center p-2 bg-green-200 rounded-full"><img
+                                            src="/icons/dashboard-1.svg" alt="car"></div>
+                                    <div>
+                                        <p class="font-bold">5</p>
+                                        <p class="text-zinc-900 text-opacity-40 text-xs font-normal">Хүргэлт</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex items-center gap-4 bg-white h-24 rounded-xl border border-slate-100 p-5 w-1/3">
+                                    <div
+                                        class="flex justify-center items-center p-2 bg-indigo-500 bg-opacity-40 rounded-full">
+                                        <img src="/icons/dashboard-2.svg" alt="car"></div>
+                                    <div>
+                                        <p class="font-bold">0</p>
+                                        <p class="text-zinc-900 text-opacity-40 text-xs font-normal">Захиалга</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex items-center gap-4 bg-white h-24 rounded-xl border border-slate-100 p-5 w-1/3">
+                                    <div
+                                        class="flex justify-center items-center p-2 bg-red-500 bg-opacity-40 rounded-full">
+                                        <img src="/icons/dashboard-3.svg" alt="car"></div>
+                                    <div>
+                                        <p class="font-bold">1</p>
+                                        <p class="text-zinc-900 text-opacity-40 text-xs font-normal">Тайлан</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-1 w-full">
+                            <div class="bg-white rounded-xl border 2xl:h-[800px] xl:h-[720px] border-slate-100 p-4">
+                                <h1 class="font-semibold mb-4 text-sm">Сүүлд үүсгэсэн хүргэлтүүд</h1>
+                                <div class="flex flex-col gap-4 2xl:h-[730px] xl:h-[650px] overflow-scroll">
+                                    <div
+                                        class="border rounded-lg border-indigo-500 border-opacity-40 h-[155px] p-2 space-y-[5px] text-sm relative">
+                                        <div class="flex items-center justify-between">
+                                            <div>ID<span class="text-gray-400 ml-3">R851044802</span></div>
+                                            <div class="font-semibold">₮69,000</div>
+                                        </div>
+                                        <div class="flex items-center space-x-2 font-semibold">
+                                            <p>Дэлгүүрийн нэр:</p>
+                                            <p>Мандал онлайн шоп1</p>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <p>TseTse Nyamka</p>
+                                            <p>88011860</p>
+                                        </div>
+                                        <div class="text-gray-400 h-8 truncate">Дархан-Уул Дархан хот </div>
+                                        <div class="pt-1 truncate">Дархан</div>
+                                        <div class="flex items-center absolute bottom-[-15px]">
+                                            <div
+                                                class="bg-indigo-500 text-white w-auto flex items-center rounded-lg space-x-1 py-1.5 px-2">
+                                                <img src="/warning/4-light.svg" class="w-5" alt="icon">
+                                                <p>Хагарна</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="border rounded-lg border-indigo-500 border-opacity-40 h-[155px] p-2 space-y-[5px] text-sm relative">
+                                        <div class="flex items-center justify-between">
+                                            <div>ID<span class="text-gray-400 ml-3">C196941404</span></div>
+                                            <div class="font-semibold">₮138,000</div>
+                                        </div>
+                                        <div class="flex items-center space-x-2 font-semibold">
+                                            <p>Дэлгүүрийн нэр:</p>
+                                            <p>Мандал онлайн шоп1</p>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <p>Ganchimeg Sereedendev</p>
+                                            <p>99098868</p>
+                                        </div>
+                                        <div class="text-gray-400 h-8 truncate"> </div>
+                                        <div class="pt-1 truncate">Хойморь оффис 407 тоот, ажлын өдрүүдэд хүлээн авах
+                                            боломжтой</div>
+                                        <div class="flex items-center absolute bottom-[-15px]">
+                                            <div
+                                                class="bg-indigo-500 text-white w-auto flex items-center rounded-lg space-x-1 py-1.5 px-2">
+                                                <img src="/warning/4-light.svg" class="w-5" alt="icon">
+                                                <p>Хагарна</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="border rounded-lg border-indigo-500 border-opacity-40 h-[155px] p-2 space-y-[5px] text-sm relative">
+                                        <div class="flex items-center justify-between">
+                                            <div>ID<span class="text-gray-400 ml-3">B853747296</span></div>
+                                            <div class="font-semibold">₮69,000</div>
+                                        </div>
+                                        <div class="flex items-center space-x-2 font-semibold">
+                                            <p>Дэлгүүрийн нэр:</p>
+                                            <p>Мандал онлайн шоп1</p>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <p>Soko Sodoo</p>
+                                            <p>86118889</p>
+                                        </div>
+                                        <div class="text-gray-400 h-8 truncate"> </div>
+                                        <div class="pt-1 truncate">Artsatiin am Green Hill 1271-16 toot</div>
+                                        <div class="flex items-center absolute bottom-[-15px]">
+                                            <div
+                                                class="bg-indigo-500 text-white w-auto flex items-center rounded-lg space-x-1 py-1.5 px-2">
+                                                <img src="/warning/4-light.svg" class="w-5" alt="icon">
+                                                <p>Хагарна</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="border rounded-lg border-indigo-500 border-opacity-40 h-[155px] p-2 space-y-[5px] text-sm relative">
+                                        <div class="flex items-center justify-between">
+                                            <div>ID<span class="text-gray-400 ml-3">C168375174</span></div>
+                                            <div class="font-semibold">₮69,000</div>
+                                        </div>
+                                        <div class="flex items-center space-x-2 font-semibold">
+                                            <p>Дэлгүүрийн нэр:</p>
+                                            <p>Мандал онлайн шоп1</p>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <p>Angella Angella</p>
+                                            <p>99995068</p>
+                                        </div>
+                                        <div class="text-gray-400 h-8 truncate"> </div>
+                                        <div class="pt-1 truncate">Zaisan udirdlagiin akademiin urd "Smile supermarket"
+                                            delguurtei 8-r bair 9 toot</div>
+                                        <div class="flex items-center absolute bottom-[-15px]">
+                                            <div
+                                                class="bg-indigo-500 text-white w-auto flex items-center rounded-lg space-x-1 py-1.5 px-2">
+                                                <img src="/warning/4-light.svg" class="w-5" alt="icon">
+                                                <p>Хагарна</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="border rounded-lg border-indigo-500 border-opacity-40 h-[155px] p-2 space-y-[5px] text-sm relative">
+                                        <div class="flex items-center justify-between">
+                                            <div>ID<span class="text-gray-400 ml-3">S782770974</span></div>
+                                            <div class="font-semibold">₮69,000</div>
+                                        </div>
+                                        <div class="flex items-center space-x-2 font-semibold">
+                                            <p>Дэлгүүрийн нэр:</p>
+                                            <p>Мандал онлайн шоп1</p>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <p>Enkhzul Tsengel</p>
+                                            <p>99109639</p>
+                                        </div>
+                                        <div class="text-gray-400 h-8 truncate"> </div>
+                                        <div class="pt-1 truncate">Encanto2 hothon, 209r bair, 2r orts, 4davhart, 33toot
+                                        </div>
+                                        <div class="flex items-center absolute bottom-[-15px]">
+                                            <div
+                                                class="bg-indigo-500 text-white w-auto flex items-center rounded-lg space-x-1 py-1.5 px-2">
+                                                <img src="/warning/4-light.svg" class="w-5" alt="icon">
+                                                <p>Хагарна</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script id="__NEXT_DATA__" type="application/json" crossorigin="">
+        {
+            "props": {
+                "pageProps": {}
+            },
+            "page": "/",
+            "query": {},
+            "buildId": "t7IPV9DpjUgXPvYfTlo5E",
+            "nextExport": true,
+            "autoExport": true,
+            "isFallback": false,
+            "scriptLoader": []
+        }
+    </script>
+    <div data-portal="true">
+        <div>
+            <div class="m-9df02822 mantine-Modal-root" style="--mb-z-index: 201;"></div>
+        </div>
+    </div>
+    <div data-portal="true">
+        <div class="m-b37d9ac7 mantine-Notifications-root"
+            style="--notifications-z-index: 1000; --notifications-top: var(--mantine-spacing-md); --notifications-right: var(--mantine-spacing-md); --notifications-container-width: calc(27.5rem * var(--mantine-scale));">
+            <div></div>
+        </div>
+    </div>
+    <next-route-announcer>
+        <p aria-live="assertive" id="__next-route-announcer__" role="alert"
+            style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; top: 0px; width: 1px; white-space: nowrap; overflow-wrap: normal;">
+            EBuuhia</p>
+    </next-route-announcer>
+    <div class="ap-ext ap-ext-taobao_search_by_image">
+        <div translate="no" class="ap-base ap-base--ltr ap-theme--dark">
+            <div>
+                <div class="ap-toolbar ap-toolbar--left ap-toolbar--expand">
+                    <!---->
+                    <div class="ap-toolbar__inner">
+                        <!---->
+                    </div>
+                </div>
+            </div>
+            <!---->
+            <div>
+                <!---->
+                <div class="ap-sbi">
+                    <!---->
+                    <div class="ap-sbi-aside">
+                        <!---->
+                        <div class="ap-sbi-aside-btn-minimize" style="display: none;"><img src=""
+                                class="ap-sbi-img-thumb"><i
+                                class="ap-sbi-aside-btn-minimize__icon ap-icon-chevron-right"></i></div>
+                        <!---->
+                    </div>
+                    <!---->
+                    <div class="ap-sbi-btn-search-wrapper" style="cursor: pointer; display: none;">
+                        <div class="ap-sbi-btn-search"><i class="ap-sbi-btn-search__icon ap-icon-search"></i><span
+                                class="ap-sbi-btn-search__txt">AliPrice</span></div>
+                        <div class="ap-sbi-options">
+                            <div class="ap-sbi-options__label"><i
+                                    class="ap-sbi-options__icon ap-icon-vertical-ellipsis"></i></div>
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div></div>
+            <div></div>
+            <div>
+                <!---->
+            </div>
+            <div></div>
+            <!---->
+            <!---->
+            <!---->
+            <div></div>
+            <div></div>
+            <!---->
+            <!---->
+        </div>
+    </div>
+    <script src="/_next/static/chunks/674a26a7-8cedfd157cfc33bc.js"></script>
+    <script src="/_next/static/chunks/9604-d0f6977f3c87d618.js"></script>
+    <script src="/_next/static/chunks/pages/signin-de950c921a07a49f.js"></script>
+    <script src="/_next/static/chunks/3062-27431356bef4c8d6.js"></script>
+    <script src="/_next/static/chunks/2929-63b9e3420e5e6b48.js"></script>
+    <script src="/_next/static/chunks/pages/dashboard-f1f95ee4546bb21e.js"></script>
+    <script src="/_next/static/chunks/pages/ware-a2733b7996c210e0.js"></script><span id="recharts_measurement_span"
+        aria-hidden="true"
+        style="position: absolute; top: -20000px; left: 0px; padding: 0px; margin: 0px; border: none; white-space: pre;">8</span>
+    <script src="/_next/static/chunks/pages/delivery/create-ff8f8929f24bc7eb.js"></script>
+    <script src="/_next/static/chunks/6616-5754ec7699239939.js"></script>
+    <script src="/_next/static/chunks/2587-ae376a50b1655fd5.js"></script>
+    <script src="/_next/static/chunks/448-9b7e05fdb2246cd2.js"></script>
+    <script src="/_next/static/chunks/310-9759794c4fc40fef.js"></script>
+    <script src="/_next/static/chunks/671-875419c0ea17bd34.js"></script>
+    <script src="/_next/static/chunks/2464-a8fa8400dcdf6a5a.js"></script>
+    <script src="/_next/static/chunks/6148-e830d5f6e72dc33f.js"></script>
+    <script src="/_next/static/chunks/9142-f696f30a328a55f5.js"></script>
+    <script src="/_next/static/chunks/4864-4fbb6db43e6d76e9.js"></script>
+    <script src="/_next/static/chunks/8052-c9149479089c8882.js"></script>
+    <script src="/_next/static/chunks/pages/delivery-2d252d6d53a00d0b.js"></script>
+    <script src="/_next/static/chunks/pages/delivery/report-2c738688db6b3ee7.js"></script>
+    <script src="/_next/static/chunks/pages/deliveryAddittion-da9c8df853878b3c.js"></script>
+    <script src="/_next/static/chunks/pages/deliveryAddittion/report-95e747c679a96f25.js"></script>
+</body>
+
+</html>

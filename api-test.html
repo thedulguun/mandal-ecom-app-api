@@ -10,6 +10,124 @@
       color: #0f172a;
       background: #f8fafc;
     }
+    .view-toggle,
+    .controls-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .view-toggle button,
+    .control-btn {
+      background: #e2e8f0;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .view-toggle button.active {
+      background: #2563eb;
+      color: #fff;
+      border-color: #1d4ed8;
+    }
+    .control-btn.primary {
+      background: #2563eb;
+      color: #fff;
+      border-color: #1d4ed8;
+    }
+    .sheet {
+      display: none;
+    }
+    .sheet table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      table-layout: fixed;
+    }
+    .sheet th,
+    .sheet td {
+      border: 1px solid #e2e8f0;
+      padding: 8px;
+      vertical-align: top;
+    }
+    .sheet th {
+      background: #f1f5f9;
+      text-align: left;
+    }
+    .sheet tbody tr:nth-child(odd) {
+      background: #f8fafc;
+    }
+    .status {
+      font-weight: 700;
+    }
+    .status.ok {
+      color: #0f766e;
+    }
+    .status.err {
+      color: #dc2626;
+    }
+    .nested-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      background: #f8fafc;
+    }
+    .nested-table th,
+    .nested-table td {
+      border: 1px solid #e2e8f0;
+      padding: 6px;
+      vertical-align: top;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      background: #fff;
+      margin-top: 6px;
+    }
+    .data-table th,
+    .data-table td {
+      border: 1px solid #e2e8f0;
+      padding: 6px;
+      vertical-align: top;
+      max-width: 240px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .data-table th {
+      background: #f8fafc;
+    }
+    .subheading {
+      font-weight: 700;
+      color: #334155;
+      margin: 8px 0 4px 0;
+    }
+    .ellipsis {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 10px 0;
+    }
+    .filter-row input,
+    .filter-row select {
+      padding: 6px 8px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .sheet-container {
+      overflow: auto;
+      max-height: calc(100vh - 180px);
+    }
     body {
       margin: 0;
       padding: 24px;
@@ -19,6 +137,26 @@
     }
     h1 {
       margin: 0 0 8px 0;
+    }
+    h2 {
+      margin: 0 0 12px 0;
+    }
+    main.layout {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+    .right {
+      position: sticky;
+      top: 16px;
+      max-height: calc(100vh - 80px);
     }
     section {
       background: #fff;
@@ -58,6 +196,34 @@
       font-weight: 600;
       cursor: pointer;
     }
+    .console-controls {
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .console-controls .view-toggle {
+      margin-bottom: 0;
+      gap: 6px;
+    }
+    .console-controls button {
+      border-radius: 8px;
+      min-height: 44px;
+      font-weight: 700;
+      border: 1px solid #cbd5e1;
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 10px 16px;
+      line-height: 1.1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .console-controls button.active {
+      background: #2563eb;
+      color: #fff;
+      border-color: #1d4ed8;
+    }
     button:disabled {
       background: #94a3b8;
       cursor: not-allowed;
@@ -68,8 +234,12 @@
       padding: 12px;
       border-radius: 8px;
       overflow: auto;
-      max-height: 360px;
+      max-height: 100%;
+      min-height: 70vh;
       font-size: 12px;
+    }
+    .console section {
+      height: 100%;
     }
     .notes {
       font-size: 13px;
@@ -93,252 +263,307 @@
     </p>
   </header>
 
-  <section>
-    <h2>Setup</h2>
-    <div class="row">
-      <label>
-        Base URL (API root)
-        <input id="baseUrl" value="http://localhost:3000/api" />
-      </label>
-      <label>
-        Current token
-        <input id="tokenInput" placeholder="Will auto-fill after login" />
-      </label>
-      <button id="applyToken">Set token manually</button>
-    </div>
-    <p class="notes">
-      Default points to the local proxy. Use the provider URL if you want to call it directly
-      (<code>https://api.ebuuhia.mn/api/v1</code>). Captured requests show <code>Authorization</code> using the raw JWT
-      (no <code>Bearer</code> prefix).
-    </p>
-  </section>
+  <main class="layout">
+    <div class="column left">
+      <section>
+        <h2>Setup</h2>
+        <div class="row">
+          <label>
+            Base URL (API root)
+            <input id="baseUrl" value="http://localhost:3000/api" />
+          </label>
+          <label>
+            Current token
+            <input id="tokenInput" placeholder="Will auto-fill after login" />
+          </label>
+          <button id="applyToken">Set token manually</button>
+        </div>
+        <p class="notes">
+          Default points to the local proxy. Use the provider URL if you want to call it directly
+          (<code>https://api.ebuuhia.mn/api/v1</code>). Captured requests show <code>Authorization</code> using the raw JWT
+          (no <code>Bearer</code> prefix).
+        </p>
+      </section>
 
-  <section>
-    <h2>Login</h2>
-    <div class="row">
-      <label>Email <input id="email" placeholder="email@example.com" /></label>
-      <label>Password <input id="password" type="password" placeholder="password" /></label>
-      <label>Device token (optional) <input id="deviceToken" placeholder="null" /></label>
-      <button id="loginBtn">Login</button>
-    </div>
-    <p class="notes">POST /login with JSON body. Response token is stored and shown below.</p>
-  </section>
+      <section>
+        <h2>Login</h2>
+        <div class="row">
+          <label>Email <input id="email" placeholder="email@example.com" /></label>
+          <label>Password <input id="password" type="password" placeholder="password" /></label>
+          <label>Device token (optional) <input id="deviceToken" placeholder="null" /></label>
+          <button id="loginBtn">Login</button>
+        </div>
+        <p class="notes">POST /login with JSON body. Response token is stored and shown below.</p>
+      </section>
 
-  <section>
-    <h2>Delivery</h2>
-    <div class="row">
-      <label>startLimit <input id="dStart" value="0" /></label>
-      <label>endLimit <input id="dEnd" value="50" /></label>
-      <label>status <input id="dStatus" value="" /></label>
-      <label>id (customer) <input id="dCustomer" value="" /></label>
-      <button id="deliveryListBtn">List deliveries</button>
-    </div>
-    <p class="notes">GET /delivery (via proxy) with common filters.</p>
-  </section>
+      <section>
+        <h2>Delivery</h2>
+        <div class="row">
+          <label>startLimit <input id="dStart" value="0" /></label>
+          <label>endLimit <input id="dEnd" value="50" /></label>
+          <label>status <input id="dStatus" value="" /></label>
+          <label>id (customer) <input id="dCustomer" value="" /></label>
+          <button id="deliveryListBtn">List deliveries</button>
+        </div>
+        <p class="notes">GET /delivery (via proxy) with common filters.</p>
+      </section>
 
-  <section>
-    <h2>User/Branch</h2>
-    <div class="row">
-      <button id="userListBtn">List users</button>
-      <button id="branchListBtn">List branches</button>
-      <button id="rolesListBtn">List roles</button>
-    </div>
-    <p class="notes">Simple list calls to check connectivity.</p>
-  </section>
+      <section>
+        <h2>User/Branch</h2>
+        <div class="row">
+          <button id="userListBtn">List users</button>
+          <button id="branchListBtn">List branches</button>
+          <button id="rolesListBtn">List roles</button>
+        </div>
+        <p class="notes">Simple list calls to check connectivity.</p>
+      </section>
 
-  <section>
-    <h2>Manual API call</h2>
-    <div class="row">
-      <label>Method <input id="manualMethod" value="GET" /></label>
-      <label>Path (relative to base) <input id="manualPath" value="/order" /></label>
-      <label>Query (JSON) <input id="manualQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
-      <label>Body (JSON) <input id="manualBody" placeholder="{} for POST/PATCH" /></label>
-      <label>Headers (JSON) <input id="manualHeaders" placeholder="{}" /></label>
-      <button id="manualSend">Send</button>
-    </div>
-    <p class="notes">Uses the base URL and token (if set). Path should start with /. Query/body/headers are parsed from JSON.</p>
-  </section>
+      <section>
+        <h2>Manual API call</h2>
+        <div class="row">
+          <label>Method <input id="manualMethod" value="GET" /></label>
+          <label>Path (relative to base) <input id="manualPath" value="/order" /></label>
+          <label>Query (JSON) <input id="manualQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
+          <label>Body (JSON) <input id="manualBody" placeholder="{} for POST/PATCH" /></label>
+          <label>Headers (JSON) <input id="manualHeaders" placeholder="{}" /></label>
+          <button id="manualSend">Send</button>
+        </div>
+        <p class="notes">Uses the base URL and token (if set). Path should start with /. Query/body/headers are parsed from JSON.</p>
+      </section>
 
-  <section>
-    <h2>Orders (helpers)</h2>
-    <div class="row">
-      <label>Query (JSON) <input id="orderQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
-      <label>Body (JSON) <input id="orderBody" placeholder="{\"id\":123}" /></label>
-      <label>Endpoint
-        <select id="orderEndpoint">
-          <option value="orderList">orderList (GET /order)</option>
-          <option value="orderArchive">orderArchive</option>
-          <option value="orderReceivedDriver">orderReceivedDriver</option>
-          <option value="orderFinished">orderFinished</option>
-          <option value="orderReport">orderReport</option>
-          <option value="orderCustomer">orderCustomer</option>
-          <option value="orderGetById">orderGetById</option>
-          <option value="orderCreate">orderCreate (POST)</option>
-          <option value="orderEdit">orderEdit (PATCH)</option>
-          <option value="orderChangeStatus">orderChangeStatus (PATCH)</option>
-          <option value="orderChangeStatus2">orderChangeStatus2 (PATCH)</option>
-          <option value="orderChangeStatusQR">orderChangeStatusQR (PATCH)</option>
-          <option value="orderChangeRegion">orderChangeRegion (PATCH)</option>
-          <option value="orderChangeRegionOrder">orderChangeRegionOrder (PATCH)</option>
-        </select>
-      </label>
-      <button id="orderSend">Send</button>
-    </div>
-    <p class="notes">Set query/body JSON as needed. Uses generated helpers.</p>
-  </section>
+      <section>
+        <h2>Orders (helpers)</h2>
+        <div class="row">
+          <label>Query (JSON) <input id="orderQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
+          <label>Body (JSON) <input id="orderBody" placeholder="{\"id\":123}" /></label>
+          <label>Endpoint
+            <select id="orderEndpoint">
+              <option value="orderList">orderList (GET /order)</option>
+              <option value="orderArchive">orderArchive</option>
+              <option value="orderReceivedDriver">orderReceivedDriver</option>
+              <option value="orderFinished">orderFinished</option>
+              <option value="orderReport">orderReport</option>
+              <option value="orderCustomer">orderCustomer</option>
+              <option value="orderGetById">orderGetById</option>
+              <option value="orderCreate">orderCreate (POST)</option>
+              <option value="orderEdit">orderEdit (PATCH)</option>
+              <option value="orderChangeStatus">orderChangeStatus (PATCH)</option>
+              <option value="orderChangeStatus2">orderChangeStatus2 (PATCH)</option>
+              <option value="orderChangeStatusQR">orderChangeStatusQR (PATCH)</option>
+              <option value="orderChangeRegion">orderChangeRegion (PATCH)</option>
+              <option value="orderChangeRegionOrder">orderChangeRegionOrder (PATCH)</option>
+            </select>
+          </label>
+          <button id="orderSend">Send</button>
+        </div>
+        <p class="notes">Set query/body JSON as needed. Uses generated helpers.</p>
+      </section>
 
-  <section>
-    <h2>Delivery (helpers)</h2>
-    <div class="row">
-      <label>Query (JSON) <input id="deliveryQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
-      <label>Body (JSON) <input id="deliveryBody" placeholder="{\"id\":123}" /></label>
-      <label>Endpoint
-        <select id="deliveryEndpoint">
-          <option value="deliveryList">deliveryList (GET)</option>
-          <option value="deliveryWithArchive">deliveryWithArchive (GET)</option>
-          <option value="deliveryItemsById">deliveryItemsById (GET)</option>
-          <option value="deliveryItems">deliveryItems (GET)</option>
-          <option value="deliveryCustomer">deliveryCustomer (GET)</option>
-          <option value="deliveryCheck">deliveryCheck (GET)</option>
-          <option value="deliveryGetChat">deliveryGetChat (GET)</option>
-          <option value="deliveryCreate">deliveryCreate (POST)</option>
-          <option value="deliveryEdit">deliveryEdit (PATCH)</option>
-          <option value="deliveryEditReceivedMoney">deliveryEditReceivedMoney (PATCH)</option>
-          <option value="deliveryEditDesc">deliveryEditDesc (PATCH)</option>
-          <option value="deliveryVerify">deliveryVerify (PATCH)</option>
-          <option value="deliveryChangeStatusQR">deliveryChangeStatusQR (PATCH)</option>
-          <option value="deliveryCreateChat">deliveryCreateChat (POST)</option>
-        </select>
-      </label>
-      <button id="deliverySend">Send</button>
-    </div>
-    <p class="notes">Multipart uploads not wired; use manual if needed.</p>
-  </section>
+      <section>
+        <h2>Delivery (helpers)</h2>
+        <div class="row">
+          <label>Query (JSON) <input id="deliveryQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
+          <label>Body (JSON) <input id="deliveryBody" placeholder="{\"id\":123}" /></label>
+          <label>Endpoint
+            <select id="deliveryEndpoint">
+              <option value="deliveryList">deliveryList (GET)</option>
+              <option value="deliveryWithArchive">deliveryWithArchive (GET)</option>
+              <option value="deliveryItemsById">deliveryItemsById (GET)</option>
+              <option value="deliveryItems">deliveryItems (GET)</option>
+              <option value="deliveryCustomer">deliveryCustomer (GET)</option>
+              <option value="deliveryCheck">deliveryCheck (GET)</option>
+              <option value="deliveryGetChat">deliveryGetChat (GET)</option>
+              <option value="deliveryCreate">deliveryCreate (POST)</option>
+              <option value="deliveryEdit">deliveryEdit (PATCH)</option>
+              <option value="deliveryEditReceivedMoney">deliveryEditReceivedMoney (PATCH)</option>
+              <option value="deliveryEditDesc">deliveryEditDesc (PATCH)</option>
+              <option value="deliveryVerify">deliveryVerify (PATCH)</option>
+              <option value="deliveryChangeStatusQR">deliveryChangeStatusQR (PATCH)</option>
+              <option value="deliveryCreateChat">deliveryCreateChat (POST)</option>
+            </select>
+          </label>
+          <button id="deliverySend">Send</button>
+        </div>
+        <p class="notes">Multipart uploads not wired; use manual if needed.</p>
+      </section>
 
-  <section>
-    <h2>User/Branch/Role (helpers)</h2>
-    <div class="row">
-      <label>Query (JSON) <input id="userQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
-      <label>Body (JSON) <input id="userBody" placeholder="{\"id\":123}" /></label>
-      <label>Endpoint
-        <select id="userEndpoint">
-          <option value="userList">userList (GET)</option>
-          <option value="userById">userById (GET)</option>
-          <option value="driverList">driverList (GET)</option>
-          <option value="branchList">branchList (GET)</option>
-          <option value="branchById">branchById (GET)</option>
-          <option value="branchIdUserId">branchIdUserId (GET)</option>
-          <option value="rolesList">rolesList (GET)</option>
-          <option value="userCreate">userCreate (POST)</option>
-          <option value="branchCreate">branchCreate (POST)</option>
-          <option value="driverCreate">driverCreate (POST)</option>
-          <option value="userEdit">userEdit (PATCH)</option>
-          <option value="branchEdit">branchEdit (PATCH)</option>
-          <option value="userApprove">userApprove (PATCH)</option>
-          <option value="branchApprove">branchApprove (PATCH)</option>
-          <option value="changePassword">changePassword (PATCH)</option>
-          <option value="resetPassword">resetPassword (POST)</option>
-          <option value="resetPasswordAlt">resetPasswordAlt (POST)</option>
-          <option value="changeDans">changeDans (PATCH)</option>
-          <option value="globalSearch">globalSearch (GET)</option>
-          <option value="roleCreate">roleCreate (POST)</option>
-        </select>
-      </label>
-      <button id="userSend">Send</button>
-    </div>
-    <p class="notes">Provide query/body JSON as required by the endpoint.</p>
-  </section>
+      <section>
+        <h2>User/Branch/Role (helpers)</h2>
+        <div class="row">
+          <label>Query (JSON) <input id="userQuery" value="{\"startLimit\":0,\"endLimit\":10}" /></label>
+          <label>Body (JSON) <input id="userBody" placeholder="{\"id\":123}" /></label>
+          <label>Endpoint
+            <select id="userEndpoint">
+              <option value="userList">userList (GET)</option>
+              <option value="userById">userById (GET)</option>
+              <option value="driverList">driverList (GET)</option>
+              <option value="branchList">branchList (GET)</option>
+              <option value="branchById">branchById (GET)</option>
+              <option value="branchIdUserId">branchIdUserId (GET)</option>
+              <option value="rolesList">rolesList (GET)</option>
+              <option value="userCreate">userCreate (POST)</option>
+              <option value="branchCreate">branchCreate (POST)</option>
+              <option value="driverCreate">driverCreate (POST)</option>
+              <option value="userEdit">userEdit (PATCH)</option>
+              <option value="branchEdit">branchEdit (PATCH)</option>
+              <option value="userApprove">userApprove (PATCH)</option>
+              <option value="branchApprove">branchApprove (PATCH)</option>
+              <option value="changePassword">changePassword (PATCH)</option>
+              <option value="resetPassword">resetPassword (POST)</option>
+              <option value="resetPasswordAlt">resetPasswordAlt (POST)</option>
+              <option value="changeDans">changeDans (PATCH)</option>
+              <option value="globalSearch">globalSearch (GET)</option>
+              <option value="roleCreate">roleCreate (POST)</option>
+            </select>
+          </label>
+          <button id="userSend">Send</button>
+        </div>
+        <p class="notes">Provide query/body JSON as required by the endpoint.</p>
+      </section>
 
-  <section>
-    <h2>Region/Khoroo</h2>
-    <div class="row">
-      <label>Query (JSON) <input id="regionQuery" value="{}" /></label>
-      <label>Body (JSON) <input id="regionBody" placeholder="{\"name\":\"region\"}" /></label>
-      <label>Endpoint
-        <select id="regionEndpoint">
-          <option value="regionList">regionList (GET)</option>
-          <option value="regionCreate">regionCreate (POST)</option>
-          <option value="khorooList">khorooList (GET)</option>
-          <option value="khorooCreate">khorooCreate (POST)</option>
-        </select>
-      </label>
-      <button id="regionSend">Send</button>
-    </div>
-  </section>
+      <section>
+        <h2>Region/Khoroo</h2>
+        <div class="row">
+          <label>Query (JSON) <input id="regionQuery" value="{}" /></label>
+          <label>Body (JSON) <input id="regionBody" placeholder="{\"name\":\"region\"}" /></label>
+          <label>Endpoint
+            <select id="regionEndpoint">
+              <option value="regionList">regionList (GET)</option>
+              <option value="regionCreate">regionCreate (POST)</option>
+              <option value="khorooList">khorooList (GET)</option>
+              <option value="khorooCreate">khorooCreate (POST)</option>
+            </select>
+          </label>
+          <button id="regionSend">Send</button>
+        </div>
+      </section>
 
-  <section>
-    <h2>Delete helpers</h2>
-    <div class="row">
-      <label>Query (JSON) <input id="deleteQuery" value="{\"table\":\"orders\",\"id\":0}" /></label>
-      <label>Endpoint
-        <select id="deleteEndpoint">
-          <option value="deleteAny">deleteAny</option>
-          <option value="deleteOrder">deleteOrder</option>
-          <option value="deleteItem">deleteItem</option>
-          <option value="deleteDelivery">deleteDelivery</option>
-          <option value="deleteBranch">deleteBranch</option>
-          <option value="deleteUser">deleteUser</option>
-          <option value="deleteWare">deleteWare</option>
-        </select>
-      </label>
-      <button id="deleteSend">Send</button>
-    </div>
-  </section>
+      <section>
+        <h2>Delete helpers</h2>
+        <div class="row">
+          <label>Query (JSON) <input id="deleteQuery" value="{\"table\":\"orders\",\"id\":0}" /></label>
+          <label>Endpoint
+            <select id="deleteEndpoint">
+              <option value="deleteAny">deleteAny</option>
+              <option value="deleteOrder">deleteOrder</option>
+              <option value="deleteItem">deleteItem</option>
+              <option value="deleteDelivery">deleteDelivery</option>
+              <option value="deleteBranch">deleteBranch</option>
+              <option value="deleteUser">deleteUser</option>
+              <option value="deleteWare">deleteWare</option>
+            </select>
+          </label>
+          <button id="deleteSend">Send</button>
+        </div>
+      </section>
 
-  <section>
-    <h2>WebHelp / Notifications / Print</h2>
-    <div class="row">
-      <label>Query (JSON) <input id="webQuery" value="{}" /></label>
-      <label>Body (JSON) <input id="webBody" placeholder="{\"title\":\"...\"}" /></label>
-      <label>Endpoint
-        <select id="webEndpoint">
-          <option value="comicList">comicList (GET)</option>
-          <option value="commentList">commentList (GET)</option>
-          <option value="notificationList">notificationList (GET)</option>
-          <option value="printGetById">printGetById (GET)</option>
-          <option value="printGetByIdDelivery">printGetByIdDelivery (GET)</option>
-          <option value="printReportDriverGeneral">printReportDriverGeneral (GET)</option>
-          <option value="reportDriverExcel">reportDriverExcel (GET)</option>
-          <option value="reportCustomerExcel">reportCustomerExcel (GET)</option>
-          <option value="reportWareSelect">reportWareSelect (GET)</option>
-          <option value="comicCreate">comicCreate (POST)</option>
-          <option value="commentCreate">commentCreate (POST)</option>
-        </select>
-      </label>
-      <button id="webSend">Send</button>
-    </div>
-    <p class="notes">Upload/image endpoints are not wired here; use manual call if needed.</p>
-  </section>
+      <section>
+        <h2>WebHelp / Notifications / Print</h2>
+        <div class="row">
+          <label>Query (JSON) <input id="webQuery" value="{}" /></label>
+          <label>Body (JSON) <input id="webBody" placeholder="{\"title\":\"...\"}" /></label>
+          <label>Endpoint
+            <select id="webEndpoint">
+              <option value="comicList">comicList (GET)</option>
+              <option value="commentList">commentList (GET)</option>
+              <option value="notificationList">notificationList (GET)</option>
+              <option value="printGetById">printGetById (GET)</option>
+              <option value="printGetByIdDelivery">printGetByIdDelivery (GET)</option>
+              <option value="printReportDriverGeneral">printReportDriverGeneral (GET)</option>
+              <option value="reportDriverExcel">reportDriverExcel (GET)</option>
+              <option value="reportCustomerExcel">reportCustomerExcel (GET)</option>
+              <option value="reportWareSelect">reportWareSelect (GET)</option>
+              <option value="comicCreate">comicCreate (POST)</option>
+              <option value="commentCreate">commentCreate (POST)</option>
+            </select>
+          </label>
+          <button id="webSend">Send</button>
+        </div>
+        <p class="notes">Upload/image endpoints are not wired here; use manual call if needed.</p>
+      </section>
 
-  <section>
-    <h2>Fetch deliveries</h2>
-    <div class="row">
-      <label>startLimit <input id="startLimit" value="0" /></label>
-      <label>endLimit <input id="endLimit" value="100" /></label>
-      <label>status <input id="status" value="100" /></label>
-      <label>id (customer) <input id="customerId" value="2015" /></label>
-      <label>order <input id="order" value="" /></label>
-      <label>sort <input id="sort" value="asc" /></label>
-      <label>search <input id="search" value="" /></label>
-      <label>value <input id="value" value="" /></label>
-      <label>action <input id="action" value="0" /></label>
-      <button id="deliveriesBtn">Get deliveries</button>
-    </div>
-    <p class="notes">GET /getDeliveryCustomer with the captured query params. Requires Authorization header set to the JWT.</p>
-  </section>
+      <section>
+        <h2>Fetch deliveries</h2>
+        <div class="row">
+          <label>startLimit <input id="startLimit" value="0" /></label>
+          <label>endLimit <input id="endLimit" value="100" /></label>
+          <label>status <input id="status" value="100" /></label>
+          <label>id (customer) <input id="customerId" value="2015" /></label>
+          <label>order <input id="order" value="" /></label>
+          <label>sort <input id="sort" value="asc" /></label>
+          <label>search <input id="search" value="" /></label>
+          <label>value <input id="value" value="" /></label>
+          <label>action <input id="action" value="0" /></label>
+          <button id="deliveriesBtn">Get deliveries</button>
+        </div>
+        <p class="notes">GET /getDeliveryCustomer with the captured query params. Requires Authorization header set to the JWT.</p>
+      </section>
 
-  <section>
-    <h2>Logout (captured behavior)</h2>
-    <div class="row">
-      <button id="logoutBtn">Run logout calls</button>
+      <section>
+        <h2>Logout (captured behavior)</h2>
+        <div class="row">
+          <button id="logoutBtn">Run logout calls</button>
+        </div>
+        <p class="notes">Runs GET /getComment and GET /getComic (captured sequence). These returned empty arrays in captures.</p>
+      </section>
     </div>
-    <p class="notes">Runs GET /getComment and GET /getComic (captured sequence). These returned empty arrays in captures.</p>
-  </section>
 
-  <section>
-    <h2>Console</h2>
-    <pre id="logOutput">{ "info": "Logs and responses will appear here." }</pre>
-  </section>
+    <aside class="column right console">
+      <section>
+        <h2>Console / Sheet</h2>
+        <div class="controls-row console-controls">
+          <div class="view-toggle">
+            <button id="consoleViewBtn" class="active">Console view</button>
+            <button id="sheetViewBtn">Sheet view</button>
+          </div>
+          <button id="autoClearBtn" class="control-btn">Auto-clear console: off</button>
+          <button id="clearAllBtn" class="control-btn">Clear all</button>
+          <button id="exportJsonBtn" class="control-btn">Export JSON</button>
+          <button id="exportCsvBtn" class="control-btn">Export CSV</button>
+        </div>
+        <div id="consoleView">
+          <pre id="logOutput">{ "info": "Logs and responses will appear here." }</pre>
+        </div>
+        <div id="sheetView" class="sheet">
+          <div class="filter-row">
+            <input id="searchInput" placeholder="Search label/path/status/message" />
+            <select id="statusFilter">
+              <option value="all">All statuses</option>
+              <option value="ok">2xx</option>
+              <option value="warn">3xx</option>
+              <option value="err">4xx/5xx</option>
+              <option value="none">No status</option>
+            </select>
+          </div>
+          <div class="sheet-container">
+            <table>
+              <colgroup>
+                <col style="width: 170px;" />
+                <col style="width: 140px;" />
+                <col style="width: 80px;" />
+                <col />
+                <col style="width: 120px;" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Label</th>
+                  <th>Status</th>
+                  <th>Summary</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody id="logTableBody">
+                <tr>
+                  <td colspan="5">Entries will appear here.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </aside>
+  </main>
 
   <script type="module">
     import {
@@ -423,15 +648,315 @@
     const baseUrlInput = document.getElementById('baseUrl');
     const tokenInput = document.getElementById('tokenInput');
     const logOutput = document.getElementById('logOutput');
+    const tableBody = document.getElementById('logTableBody');
+    const consoleViewBtn = document.getElementById('consoleViewBtn');
+    const sheetViewBtn = document.getElementById('sheetViewBtn');
+    const consoleView = document.getElementById('consoleView');
+    const sheetView = document.getElementById('sheetView');
+    const autoClearBtn = document.getElementById('autoClearBtn');
+    const clearAllBtn = document.getElementById('clearAllBtn');
+    const exportJsonBtn = document.getElementById('exportJsonBtn');
+    const exportCsvBtn = document.getElementById('exportCsvBtn');
+    const searchInput = document.getElementById('searchInput');
+    const statusFilter = document.getElementById('statusFilter');
+    const entries = [];
+    const consoleEntries = [];
+    let autoClearConsole = false;
+
+    const normalizeEntry = (label, data) => {
+      const statusVal = data?.status ?? data?.statusCode ?? null;
+      const responseBody = data?.response?.data ?? data?.data ?? data?.body ?? null;
+      const req = data?.request || data?.config || {};
+      const res = data?.response || {};
+      const normalized = {
+        at: new Date().toISOString(),
+        label,
+        status: statusVal,
+        message: data?.message || data?.error || data?.statusText || '',
+        endpoint: data?.endpoint || data?.url || req?.url || '',
+        request: {
+          method: req?.method || data?.method,
+          path: req?.path || req?.url || data?.path,
+          query: req?.params || data?.query,
+          body: req?.body || data?.requestBody,
+          headers: req?.headers
+        },
+        response: {
+          status: statusVal ?? res?.status,
+          statusText: res?.statusText,
+          body: responseBody,
+          headers: res?.headers
+        },
+        raw: data
+      };
+      return normalized;
+    };
 
     const log = (label, data) => {
       const entry = {
-        at: new Date().toISOString(),
-        label,
-        data
+        ...normalizeEntry(label, data)
       };
-      logOutput.textContent = `${entry.at} | ${entry.label}\n${JSON.stringify(entry.data, null, 2)}\n\n${logOutput.textContent}`;
+      entries.unshift(entry);
+      const MAX_ENTRIES = 200;
+      if (entries.length > MAX_ENTRIES) entries.length = MAX_ENTRIES;
+
+      if (autoClearConsole) consoleEntries.length = 0;
+      consoleEntries.unshift(entry);
+      if (consoleEntries.length > MAX_ENTRIES) consoleEntries.length = MAX_ENTRIES;
+
+      renderConsole();
+      renderSheet();
     };
+
+    const summarizeData = (entry) => {
+      if (!entry) return '';
+      const msg = entry.message || entry.raw?.message || entry.raw?.error;
+      if (msg) return String(msg).slice(0, 160);
+      if (entry.response?.body) {
+        const body = typeof entry.response.body === 'object' ? JSON.stringify(entry.response.body) : String(entry.response.body);
+        return body.slice(0, 160);
+      }
+      if (entry.raw) {
+        try {
+          return JSON.stringify(entry.raw).slice(0, 160);
+        } catch {
+          return String(entry.raw).slice(0, 160);
+        }
+      }
+      return '';
+    };
+
+    const escapeHtml = (value) =>
+      String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+    const renderConsole = () => {
+      if (!consoleEntries.length) {
+        logOutput.textContent = '{ "info": "Logs and responses will appear here." }';
+        return;
+      }
+      const list = autoClearConsole ? [consoleEntries[0]] : consoleEntries;
+      const text = list
+        .map((entry) => {
+          const payload = entry.raw ?? entry;
+          return `${entry.at} | ${entry.label}\n${JSON.stringify(payload, null, 2)}`;
+        })
+        .join('\n\n');
+      logOutput.textContent = text;
+    };
+
+    const toTableRows = (data) => {
+      if (data === null || data === undefined) {
+        return '<tr><td colspan="2">No data</td></tr>';
+      }
+      if (typeof data !== 'object') {
+        return `<tr><th>value</th><td>${escapeHtml(String(data))}</td></tr>`;
+      }
+      const entriesArr = Object.entries(data);
+      if (!entriesArr.length) {
+        return '<tr><td colspan="2">Empty object</td></tr>';
+      }
+      return entriesArr
+        .map(([key, val]) => {
+          if (val && typeof val === 'object') {
+            return `<tr><th>${escapeHtml(key)}</th><td><details><summary>Object/Array</summary><pre style="white-space:pre-wrap;margin:0;">${escapeHtml(JSON.stringify(val, null, 2))}</pre></details></td></tr>`;
+          }
+          return `<tr><th>${escapeHtml(key)}</th><td><pre style="white-space:pre-wrap;margin:0;">${escapeHtml(String(val))}</pre></td></tr>`;
+        })
+        .join('');
+    };
+
+    const extractDataRows = (entry) => {
+      const body = entry?.response?.body;
+      if (Array.isArray(body)) return body;
+      if (body && Array.isArray(body.data)) return body.data;
+      return null;
+    };
+
+    const renderDataTable = (items) => {
+      if (!Array.isArray(items) || !items.length) {
+        return '<p class="notes">No tabular data.</p>';
+      }
+      const sample = items.slice(0, 10);
+      const columns = Array.from(
+        sample.reduce((set, row) => {
+          if (row && typeof row === 'object' && !Array.isArray(row)) {
+            Object.keys(row).forEach((k) => set.add(k));
+          }
+          return set;
+        }, new Set())
+      );
+      if (!columns.length) return '<p class="notes">No object rows to tabulate.</p>';
+      const rowsHtml = sample
+        .map((row) => {
+          const cells = columns
+            .map((col) => {
+              const val = row?.[col];
+              const text = val && typeof val === 'object' ? JSON.stringify(val) : val ?? '';
+              return `<td title="${escapeHtml(String(text))}">${escapeHtml(String(text).slice(0, 140))}</td>`;
+            })
+            .join('');
+          return `<tr>${cells}</tr>`;
+        })
+        .join('');
+      const header = columns.map((c) => `<th>${escapeHtml(c)}</th>`).join('');
+      const moreNote = items.length > sample.length ? `<p class="notes">Showing first ${sample.length} of ${items.length} rows.</p>` : '';
+      return `
+        ${moreNote}
+        <table class="data-table">
+          <thead><tr>${header}</tr></thead>
+          <tbody>${rowsHtml}</tbody>
+        </table>
+      `;
+    };
+
+    const matchesFilter = (entry) => {
+      const q = (searchInput.value || '').toLowerCase();
+      const statusOpt = statusFilter.value;
+      if (statusOpt !== 'all') {
+        if (statusOpt === 'ok' && !(entry.status >= 200 && entry.status < 300)) return false;
+        if (statusOpt === 'warn' && !(entry.status >= 300 && entry.status < 400)) return false;
+        if (statusOpt === 'err' && !(entry.status >= 400)) return false;
+        if (statusOpt === 'none' && entry.status !== null && entry.status !== undefined) return false;
+      }
+      if (!q) return true;
+      const haystack = [
+        entry.label,
+        entry.status,
+        entry.message,
+        entry.endpoint,
+        entry.request?.path,
+        entry.request?.method,
+        entry.response?.statusText,
+        JSON.stringify(entry.raw || {})
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase();
+      return haystack.includes(q);
+    };
+
+    const renderDetails = (entry) => {
+      const req = entry.request || {};
+      const res = entry.response || {};
+      const dataRows = extractDataRows(entry);
+      return `
+        <div class="subheading">Request</div>
+        <table class="nested-table">
+          ${toTableRows({
+            method: req.method,
+            path: req.path,
+            query: req.query,
+            body: req.body,
+            headers: req.headers
+          })}
+        </table>
+        <div class="subheading">Response</div>
+        <table class="nested-table">
+          ${toTableRows({
+            status: res.status ?? entry.status,
+            statusText: res.statusText,
+            body: res.body,
+            headers: res.headers
+          })}
+        </table>
+        ${dataRows ? `<div class="subheading">Response data (tabular)</div>${renderDataTable(dataRows)}` : ''}
+        <div class="subheading">Raw</div>
+        <pre style="white-space:pre-wrap;margin:0;">${escapeHtml(JSON.stringify(entry.raw ?? entry, null, 2))}</pre>
+      `;
+    };
+
+    const renderSheet = () => {
+      if (!entries.length) {
+        tableBody.innerHTML = '<tr><td colspan="5">Entries will appear here.</td></tr>';
+        return;
+      }
+      const filtered = entries.filter(matchesFilter);
+      if (!filtered.length) {
+        tableBody.innerHTML = '<tr><td colspan="5">No entries match filters.</td></tr>';
+        return;
+      }
+      tableBody.innerHTML = filtered
+        .map((entry) => {
+          const statusVal = entry.status;
+          const statusText = statusVal !== null && statusVal !== undefined ? statusVal : '-';
+          const statusClass = statusVal >= 200 && statusVal < 400 ? 'ok' : statusVal ? 'err' : '';
+          const summary = escapeHtml(summarizeData(entry));
+          return `
+            <tr>
+              <td class="ellipsis" title="${escapeHtml(entry.at)}">${escapeHtml(entry.at)}</td>
+              <td class="ellipsis" title="${escapeHtml(entry.label)}">${escapeHtml(entry.label)}</td>
+              <td class="status ${statusClass}">${escapeHtml(statusText)}</td>
+              <td class="ellipsis" title="${summary}">${summary}</td>
+              <td><details><summary>View</summary>${renderDetails(entry)}</details></td>
+            </tr>
+          `;
+        })
+        .join('');
+    };
+
+    const setView = (view) => {
+      if (view === 'console') {
+        consoleView.style.display = 'block';
+        sheetView.style.display = 'none';
+        consoleViewBtn.classList.add('active');
+        sheetViewBtn.classList.remove('active');
+      } else {
+        consoleView.style.display = 'none';
+        sheetView.style.display = 'block';
+        consoleViewBtn.classList.remove('active');
+        sheetViewBtn.classList.add('active');
+      }
+    };
+
+    consoleViewBtn.addEventListener('click', () => setView('console'));
+    sheetViewBtn.addEventListener('click', () => setView('sheet'));
+    autoClearBtn.addEventListener('click', () => {
+      autoClearConsole = !autoClearConsole;
+      autoClearBtn.textContent = `Auto-clear console: ${autoClearConsole ? 'on' : 'off'}`;
+      renderConsole();
+    });
+    clearAllBtn.addEventListener('click', () => {
+      entries.length = 0;
+      consoleEntries.length = 0;
+      renderConsole();
+      renderSheet();
+    });
+    const download = (filename, content, type = 'application/json') => {
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+    exportJsonBtn.addEventListener('click', () => {
+      download('logs.json', JSON.stringify(entries, null, 2));
+    });
+    const toCsv = (arr) => {
+      const headers = ['time', 'label', 'status', 'message', 'endpoint'];
+      const rows = arr.map((e) =>
+        headers
+          .map((h) => {
+            const val = (e[h] !== undefined && e[h] !== null) ? String(e[h]) : '';
+            return `"${val.replace(/"/g, '""')}"`;
+          })
+          .join(',')
+      );
+      return `${headers.join(',')}\n${rows.join('\n')}`;
+    };
+    exportCsvBtn.addEventListener('click', () => {
+      download('logs.csv', toCsv(entries), 'text/csv');
+    });
+    searchInput.addEventListener('input', renderSheet);
+    statusFilter.addEventListener('change', renderSheet);
+    setView('console');
+
+    renderConsole();
+    renderSheet();
 
     const formatError = (err) => ({
       message: err?.message || err,
