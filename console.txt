@@ -1,0 +1,54 @@
+framework-ca706bf673a13738.js:9 Uncaught Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Eg (framework-ca706bf673a13738.js:9:46427)
+    at x (framework-ca706bf673a13738.js:9:121135)
+    at Vk (framework-ca706bf673a13738.js:9:99132)
+    at framework-ca706bf673a13738.js:9:98999
+    at Jk (framework-ca706bf673a13738.js:9:99006)
+    at Hk (framework-ca706bf673a13738.js:9:94050)
+    at J (framework-ca706bf673a13738.js:33:1364)
+    at MessagePort.R (framework-ca706bf673a13738.js:33:1894)
+framework-ca706bf673a13738.js:9 Uncaught Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Eg (framework-ca706bf673a13738.js:9:46427)
+    at x (framework-ca706bf673a13738.js:9:121135)
+    at Vk (framework-ca706bf673a13738.js:9:99132)
+    at framework-ca706bf673a13738.js:9:98999
+    at Jk (framework-ca706bf673a13738.js:9:99006)
+    at Hk (framework-ca706bf673a13738.js:9:94050)
+    at J (framework-ca706bf673a13738.js:33:1364)
+    at MessagePort.R (framework-ca706bf673a13738.js:33:1894)
+framework-ca706bf673a13738.js:9 Uncaught Error: Minified React error #423; visit https://reactjs.org/docs/error-decoder.html?invariant=423 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at x (framework-ca706bf673a13738.js:9:120804)
+    at Vk (framework-ca706bf673a13738.js:9:99132)
+    at framework-ca706bf673a13738.js:9:98999
+    at Jk (framework-ca706bf673a13738.js:9:99006)
+    at Ok (framework-ca706bf673a13738.js:9:95762)
+    at Hk (framework-ca706bf673a13738.js:9:94318)
+    at J (framework-ca706bf673a13738.js:33:1364)
+    at MessagePort.R (framework-ca706bf673a13738.js:33:1894)
+VM11:17 LOG Object
+VM7:6 LOG Object
+VM11:17 LOG Object
+VM7:6 LOG Object
+api/v1/getComment:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+api/v1/getComic:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+VM11:17 LOG Object
+VM7:6 LOG Object
+api/v1/login:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+VM11:17 LOG Object
+VM7:6 LOG Object
+api/v1/login:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+VM11:17 LOG Object
+VM7:6 LOG Object
+api/v1/login:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+VM11:17 LOG Object
+VM7:6 LOG Object
+api/v1/login:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+VM11:17 LOG Object
+VM7:6 LOG Object
+api/v1/login:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+VM11:17 LOG Object
+VM7:6 LOG Object
+api/v1/login:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+VM11:17 LOG Object
+VM7:6 LOG Object
+api/v1/login:1  Failed to load resource: the server responded with a status of 404 (Not Found)

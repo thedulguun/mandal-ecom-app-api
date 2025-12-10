@@ -165,7 +165,17 @@ const proxyInferred = (method, path) => {
 proxyInferred('POST', '/createOrder');
 
 // Delivery
-['/delivery', '/deliveryWithArchive', '/getDelivery_items_by_id', '/getDelivery_items', '/getDeliveryCustomer', '/checkDelivery', '/getChat'].forEach(
+[
+  '/delivery',
+  '/deliveryWithArchive',
+  '/getDelivery_items_by_id',
+  '/getDelivery_items',
+  '/getDeliveryCustomer',
+  '/checkDelivery',
+  '/getChat',
+  '/getDeliveryChart',
+  '/getDeliveryTotal'
+].forEach(
   (p) => proxyInferred('GET', p)
 );
 ['/createDelivery', '/editDelivery', '/editReceivedMoney', '/editDesc', '/verify', '/uploadExcelFile', '/createChat'].forEach(
@@ -173,10 +183,35 @@ proxyInferred('POST', '/createOrder');
 );
 
 // Users / Branch / Driver / Roles / Region / Khoroo
-['/users', '/userById', '/driver', '/getBranch', '/branchById', '/branchIdUserId', '/roles', '/region', '/khoroo', '/globalSearch'].forEach((p) =>
-  proxyInferred('GET', p)
-);
-['/createUser', '/createBranch', '/createDriver', '/editUser', '/editBranch', '/approve', '/approveBranch', '/changePassword', '/resetPassword', '/reset-password', '/changeDans', '/createRole', '/createRegion', '/createKhoroo'].forEach(
+[
+  '/users',
+  '/userById',
+  '/driver',
+  '/getBranch',
+  '/branchById',
+  '/branchIdUserId',
+  '/roles',
+  '/region',
+  '/khoroo',
+  '/globalSearch',
+  '/wareByUserId'
+].forEach((p) => proxyInferred('GET', p));
+[
+  '/createUser',
+  '/createBranch',
+  '/createDriver',
+  '/editUser',
+  '/editBranch',
+  '/approve',
+  '/approveBranch',
+  '/changePassword',
+  '/resetPassword',
+  '/reset-password',
+  '/changeDans',
+  '/createRole',
+  '/createRegion',
+  '/createKhoroo'
+].forEach(
   (p) => proxyInferred('POST', p)
 );
 
@@ -190,6 +225,40 @@ proxyInferred('POST', '/createOrder');
   (p) => proxyInferred('GET', p)
 );
 ['/createComic', '/createComment', '/upload-image'].forEach((p) => proxyInferred('POST', p));
+
+// Items / Ware / Reports (additional inferred)
+[
+  '/items',
+  '/itemsById',
+  '/itemsByWareId',
+  '/getWareCustomer',
+  '/getItemCustomer',
+  '/getReportWareByUser',
+  '/getReportGeneralCustomerByUser',
+  '/reportCustomerByUser',
+  '/getReportDashboard',
+  '/getDeliveryChart',
+  '/getDeliveryTotal',
+  '/getReportCustomerMoney',
+  '/getReportDriverMoney',
+  '/getReportDriverMoneyDone',
+  '/getReportGeneralCustomer',
+  '/getReportGeneralDriver',
+  '/getReportWare',
+  '/getReportWareByUser',
+  '/getReturnedItem',
+  '/reportCustomer',
+  '/reportDone',
+  '/reportDoneCustomer',
+  '/reportDriver',
+  '/reportRestore',
+  '/getGroupItem',
+  '/getCustomerReportDetail'
+].forEach((p) => proxyInferred('GET', p));
+['/createItem', '/createWare', '/addItem', '/bundleItem', '/prepareItem', '/readyItem'].forEach((p) => proxyInferred('POST', p));
+['/editItem', '/editItemQuantity', '/editPay', '/editCash', '/editStart', '/editEnd', '/editAccount', '/editWare'].forEach((p) =>
+  proxyInferred('PATCH', p)
+);
 
 app.listen(PORT, () => {
   console.log(`Proxy listening on http://localhost:${PORT} (forwarding to ${PROVIDER_BASE})`);

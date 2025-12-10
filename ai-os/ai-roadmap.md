@@ -1,17 +1,17 @@
 File-Name: ai-roadmap.md
 File-Role: roadmap
-OS-Version: 0.1.3
-Last-Updated: 2025-12-09T02:55:00Z
+OS-Version: 0.1.5
+Last-Updated: 2025-12-10T17:50:00Z
 Last-Updated-By: AI
 Special-OS-File: false
 
 # Roadmap
 
 ## Near-Term
-- Stand up Node + Express scaffold in `API/` with env-driven config for ebuuhia base URL and credentials.
-- Implement login endpoint using captured browser requests; store token in-memory with clear/logout path.
-- Implement delivery list fetch endpoint to validate login flow; wire to static HTML page actions (login, logout/clear token, fetch deliveries).
-- Add basic logging and error surfacing; document required `.env` keys as discovered.
+- Keep the proxy (`API/`) aligned with captured endpoints; add any missing routes as new calls are observed in `api-call-log.json`.
+- Maintain the published SDK (`mandal-ebuuhia-sdk`) so it mirrors proxy behavior and captured request shapes.
+- Use the rewritten local snapshot and test harness to validate flows; capture new HAR/logs for uncovered endpoints.
+- Document env keys and minimal setup so the proxy and snapshot wiring stay reproducible.
 
 ## Mid-Term
 - Expand API coverage: create/update deliveries, inventory management, status updates as endpoints become known.

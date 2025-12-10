@@ -80,6 +80,19 @@
     { "name": "printReportDriverGeneral", "method": "GET", "path": "/getPrintReportGeneralDriver", "query": true },
     { "name": "reportDriverExcel", "method": "GET", "path": "/getReportDriverExcel", "query": true },
     { "name": "reportCustomerExcel", "method": "GET", "path": "/getReportCustomerExcel", "query": true },
-    { "name": "reportWareSelect", "method": "GET", "path": "/getReportWareSelect", "query": true }
+    { "name": "reportWareSelect", "method": "GET", "path": "/getReportWareSelect", "query": true },
+
+    { "name": "reportDashboard", "method": "GET", "path": "/getReportDashboard", "query": true },
+    { "name": "deliveryChart", "method": "GET", "path": "/getDeliveryChart", "query": true },
+    { "name": "deliveryTotal", "method": "GET", "path": "/getDeliveryTotal", "query": true },
+    { "name": "wareCustomer", "method": "GET", "path": "/getWareCustomer", "query": true },
+    { "name": "itemCustomer", "method": "GET", "path": "/getItemCustomer", "query": true },
+    { "name": "wareByUserId", "method": "GET", "path": "/wareByUserId", "query": true },
+    { "name": "itemCreate", "method": "POST", "path": "/createItem", "body": true },
+    { "name": "reportWareByUser", "method": "GET", "path": "/getReportWareByUser", "query": true },
+    { "name": "reportGeneralCustomerByUser", "method": "GET", "path": "/getReportGeneralCustomerByUser", "query": true },
+    { "name": "reportCustomerByUser", "method": "GET", "path": "/reportCustomerByUser", "query": true },
+    { "name": "itemsById", "method": "GET", "path": "/itemsById", "query": true },
+    { "name": "itemsByWareId", "method": "GET", "path": "/itemsByWareId", "query": true }
   ]
 }

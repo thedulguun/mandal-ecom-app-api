@@ -6,6 +6,47 @@
     <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width">
     <link rel="icon" href="/logo.svg?v=1.1">
     <meta name="next-head-count" content="4">
+    <script>
+        (function () {
+            const calls = [];
+            const log = (entry) => {
+                calls.push(entry);
+                console.log('LOG', entry);
+            };
+            const origFetch = window.fetch;
+            window.fetch = async (...args) => {
+                const [url, opts = {}] = args;
+                const method = (opts.method || 'GET').toUpperCase();
+                log({
+                    kind: 'fetch',
+                    method,
+                    url: url.toString(),
+                    body: opts.body || null
+                });
+                return origFetch.apply(this, args);
+            };
+            const origOpen = XMLHttpRequest.prototype.open;
+            XMLHttpRequest.prototype.open = function (m, u, ...rest) {
+                this._method = m;
+                this._url = u;
+                return origOpen.call(this, m, u, ...rest);
+            };
+            const origSend = XMLHttpRequest.prototype.send;
+            XMLHttpRequest.prototype.send = function (body) {
+                log({
+                    kind: 'xhr',
+                    method: this._method,
+                    url: this._url,
+                    body: body || null
+                });
+                return origSend.call(this, body);
+            };
+            window.addEventListener('beforeunload', () => {
+                localStorage.setItem('api-call-log', JSON.stringify(calls));
+            });
+        })();
+    </script>
+
     <script data-mantine-script="true">
         try {
             var _colorScheme = window.localStorage.getItem("mantine-color-scheme-value");
@@ -92,6 +133,52 @@
 </head>
 
 <body ap-style="">
+    <script>
+      (function() {
+        const calls = [];
+        const PROVIDER_BASE = 'https://api.ebuuhia.mn/api/v1';
+        const PROXY_BASE = 'http://localhost:3000/api';
+        const rewriteUrl = (url) => {
+          try {
+            return url.startsWith(PROVIDER_BASE)
+              ? PROXY_BASE + url.slice(PROVIDER_BASE.length)
+              : url;
+          } catch {
+            return url;
+          }
+        };
+        const log = (entry) => {
+          calls.push(entry);
+          console.log('LOG', entry);
+        };
+        const origFetch = window.fetch;
+        window.fetch = async (...args) => {
+          const [url, opts = {}] = args;
+          const method = (opts.method || 'GET').toUpperCase();
+          const newUrl = rewriteUrl(url.toString());
+          log({ kind: 'fetch', method, url: newUrl, body: opts.body || null });
+          return origFetch.call(this, newUrl, opts);
+        };
+        const origOpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function (m, u, ...rest) {
+          this._method = m;
+          this._url = rewriteUrl(u);
+          return origOpen.call(this, m, this._url, ...rest);
+        };
+        const origSend = XMLHttpRequest.prototype.send;
+        XMLHttpRequest.prototype.send = function (body) {
+          log({ kind: 'xhr', method: this._method, url: this._url, body: body || null });
+          return origSend.call(this, body);
+        };
+        window.addEventListener('beforeunload', () => {
+          try {
+            localStorage.setItem('api-call-log', JSON.stringify(calls));
+          } catch (e) {
+            console.error('Failed to persist api-call-log', e);
+          }
+        });
+      })();
+    </script>
     <div id="__next">
         <style data-mantine-styles="classes">
             @media (max-width: 35.99375em) {

@@ -436,3 +436,75 @@ export async function reportWareSelect(options = {}) {
   return res;
 }
 
+
+export async function reportDashboard(options = {}) {
+  const res = await httpRequest({ path: 'getReportDashboard', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function deliveryChart(options = {}) {
+  const res = await httpRequest({ path: 'getDeliveryChart', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function deliveryTotal(options = {}) {
+  const res = await httpRequest({ path: 'getDeliveryTotal', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function wareCustomer(options = {}) {
+  const res = await httpRequest({ path: 'getWareCustomer', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function itemCustomer(options = {}) {
+  const res = await httpRequest({ path: 'getItemCustomer', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function wareByUserId(options = {}) {
+  const res = await httpRequest({ path: 'wareByUserId', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function itemCreate(options = {}) {
+  const res = await httpRequest({ path: 'createItem', method: 'POST', baseUrl: options.baseUrl, body: options.body, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function reportWareByUser(options = {}) {
+  const res = await httpRequest({ path: 'getReportWareByUser', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function reportGeneralCustomerByUser(options = {}) {
+  const res = await httpRequest({ path: 'getReportGeneralCustomerByUser', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function reportCustomerByUser(options = {}) {
+  const res = await httpRequest({ path: 'reportCustomerByUser', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function itemsById(options = {}) {
+  const res = await httpRequest({ path: 'itemsById', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+
+
+export async function itemsByWareId(options = {}) {
+  const res = await httpRequest({ path: 'itemsByWareId', method: 'GET', baseUrl: options.baseUrl, query: options.query, headers: { ...(options.headers || {}), ...(options.useAuth === false ? {} : getAuthHeaders()) } });
+  return res;
+}
+

@@ -1,7 +1,7 @@
 File-Name: ai-os-changelog.md
 File-Role: changelog
-OS-Version: 0.1.3
-Last-Updated: 2025-12-09T02:55:00Z
+OS-Version: 0.1.5
+Last-Updated: 2025-12-10T17:50:00Z
 Last-Updated-By: AI
 Special-OS-File: false
 
@@ -23,3 +23,12 @@ Special-OS-File: false
 ## [0.1.3] 2025-12-09T02:55:00Z - SDK generation and test harness updates
 - Added inferred-endpoint helper generation, proxy passthrough routes, and expanded test page coverage.
 - Documented current client/proxy/test workflows; bumped OS metadata and summaries.
+
+## [0.1.4] 2025-12-10T17:20:00Z - SDK publish and proxy rewrite
+- Packaged and published `mandal-ebuuhia-sdk` 0.1.2 with captured/inferred helpers plus convenience login/config flows.
+- Expanded proxy routes and rewrote the local snapshot to call the proxy; added request logging to `api-call-log.json`.
+- Bumped OS metadata and summaries to reflect the new SDK/proxy/logging setup.
+
+## [0.1.5] 2025-12-10T17:50:00Z - API doc guide
+- Added human-friendly API guide design to clarify “when to use” for each endpoint and improve SDK/proxy usability.
+- Updated OS summaries and metadata to note the doc guidance.

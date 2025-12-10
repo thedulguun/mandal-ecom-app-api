@@ -1,21 +1,22 @@
 File-Name: PROJECT_SUMMARY.md
 File-Role: summary
-OS-Version: 0.1.3
-Last-Updated: 2025-12-09T02:55:00Z
+OS-Version: 0.1.5
+Last-Updated: 2025-12-10T17:50:00Z
 Last-Updated-By: AI
 Special-OS-File: false
 
 Note: This summary can be stale. Say "update summaries" in an AI chat to refresh it before relying on it.
 
 # Project Snapshot
-- Internal tool: Node + Express API proxy in `API/` forwarding to ebuuhia.mn; client SDK in `client/`; static HTML test page consumes the SDK.
+- Internal tool: Node + Express API proxy in `API/` forwarding to ebuuhia.mn; published npm SDK `mandal-ebuuhia-sdk` wraps the same endpoints.
+- Local static snapshot (`downloaded-next-static/`) is rewritten to call the proxy; `api-test.html` remains the raw test harness. Both can log requests to `api-call-log.json`.
+- Added API guide design with “when to use” guidance per endpoint to help consumers pick the right call.
 - Users: requester and internal team; keep simple, high-autonomy development.
 
 # Current Scope
-- Implement login (token retrieval) and delivery list fetch based on captured browser requests.
-- Proxy endpoints: `/api/login`, `/api/deliveries`, `/api/logout`; token kept in memory on the server.
-- Static page (`api-test.html`) uses the browser client module by default against the local proxy; can point directly at the provider if needed.
-- Expanded helpers: generated from captures plus inferred endpoint list; proxy passthrough routes; test page has buttons/dropdowns for most endpoints and a manual caller.
+- Proxy and SDK cover the captured delivery/report/item endpoints (login, deliveries, ware/item lookups, charts/totals, etc.); token kept in memory on the server.
+- npm package ships dist builds (CJS/ESM) with convenience helpers for config/login; proxy exposes matching routes under `/api`.
+- Static snapshot and test page exercise the API; request logger helps surface missing endpoints for future additions.
 
 # Constraints & Preferences
 - Stack: Node + Express backend; vanilla JS frontend; Node 18+ for built-in `fetch`.

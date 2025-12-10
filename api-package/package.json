@@ -1,0 +1,28 @@
+{
+  "name": "mandal-ebuuhia-sdk",
+  "version": "0.1.2",
+  "type": "module",
+  "description": "Client SDK for calling the Ebuuhia proxy/provider.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "sync-helpers": "node scripts/sync-helpers.js",
+    "build:esm": "esbuild src/index.js --bundle --format=esm --outfile=dist/index.js",
+    "build:cjs": "esbuild src/index.js --bundle --format=cjs --outfile=dist/index.cjs",
+    "build": "npm run sync-helpers && npm run build:esm && npm run build:cjs",
+    "lint": "echo \"Add lint command here\"",
+    "test": "echo \"Add tests here\""
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "devDependencies": {
+    "esbuild": "^0.27.1"
+  }
+}

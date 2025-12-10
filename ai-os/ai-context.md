@@ -1,7 +1,7 @@
 File-Name: ai-context.md
 File-Role: context
-OS-Version: 0.1.3
-Last-Updated: 2025-12-09T02:55:00Z
+OS-Version: 0.1.5
+Last-Updated: 2025-12-10T17:50:00Z
 Last-Updated-By: AI
 Special-OS-File: false
 
@@ -9,13 +9,13 @@ Special-OS-File: false
 
 ## Project Overview
 - Internal e-commerce operations helper that integrates with delivery provider ebuuhia.mn via their API.
-- Build a simple Node + Express API in `API/` to handle login (token retrieval) and delivery list retrieval, exposing endpoints our app will consume.
-- Provide a root static HTML page to simulate the app workflow: login, logout/clear token, fetch delivery list.
+- Ship a Node + Express proxy in `API/` plus an npm package `mandal-ebuuhia-sdk` that wraps the captured/inferred HTTP calls.
+- Provide a local static snapshot (`downloaded-next-static/`) and a test HTML harness to exercise flows; snapshot is rewritten to call the local proxy and can log API calls.
 
 ## Goals & Scope
-- Short term: replicate browser interactions with ebuuhia.mn using captured requests to implement login and fetch deliveries; keep implementation minimal and clear.
-- Medium term: expand to more delivery operations (creation, updates, inventory) as endpoints are discovered.
-- Keep the system simple and maintainable for a small internal team.
+- Short term: keep the proxy and SDK aligned with captured requests, including login and the growing set of delivery/report/item endpoints.
+- Medium term: expand coverage to the remaining captured-but-untested endpoints and harden the SDK convenience helpers.
+- Keep the system simple and maintainable for a small internal team; prefer clear wiring (proxy base, SDK config) and simple docs.
 
 ## Users & Stakeholders
 - Primary users: the requester and their internal team.
