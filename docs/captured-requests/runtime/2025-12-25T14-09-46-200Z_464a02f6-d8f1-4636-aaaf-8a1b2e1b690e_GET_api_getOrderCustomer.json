@@ -1,0 +1,54 @@
+{
+  "recordedAt": "2025-12-25T14:09:46.200Z",
+  "requestId": "464a02f6-d8f1-4636-aaaf-8a1b2e1b690e",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/getOrderCustomer",
+    "originalUrl": "/api/getOrderCustomer?startLimit=0&endLimit=100&order=&sort=asc&search=&value=&status=5&id=2015",
+    "query": {
+      "startLimit": "0",
+      "endLimit": "100",
+      "order": "",
+      "sort": "asc",
+      "search": "",
+      "value": "",
+      "status": "5",
+      "id": "2015"
+    },
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/getOrderCustomer?startLimit=0&endLimit=100&order=&sort=asc&search=&value=&status=5&id=2015",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": [],
+      "pagination": 0,
+      "token": "[REDACTED]"
+    }
+  },
+  "local": false,
+  "durationMs": 111,
+  "startedAt": "2025-12-25T14:09:46.089Z"
+}

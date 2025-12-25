@@ -1,0 +1,72 @@
+{
+  "recordedAt": "2025-12-25T14:19:15.228Z",
+  "requestId": "99a0132f-46dc-400b-9842-f07d532e212a",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/userById",
+    "originalUrl": "/api/userById?user_id=2015",
+    "query": {
+      "user_id": "2015"
+    },
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/userById?user_id=2015",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": {
+        "user_id": 2015,
+        "shop_name": "Мандал Онлайн Шоп",
+        "email": "mandalbeauty@yahoo.com",
+        "first_name": "Мандал",
+        "last_name": "Мандал",
+        "driver_name": null,
+        "r_d": "УД04040404",
+        "phone": 99537771,
+        "phone1": 99537771,
+        "password": "[REDACTED]",
+        "role": "customer",
+        "address": null,
+        "address1": null,
+        "car_number": null,
+        "image": null,
+        "car_type": null,
+        "type": null,
+        "bank_type": "Хаан банк",
+        "bank_num": "MN620005005176599539",
+        "bank_name": "Номун Мөнхбаатар",
+        "price": 6000,
+        "approve": 1,
+        "active": 1,
+        "created_at": "2024-11-22T10:12:20.000Z",
+        "updated_at": "2025-12-25T14:13:27.000Z",
+        "token": "[REDACTED]"
+      }
+    }
+  },
+  "local": false,
+  "durationMs": 104,
+  "startedAt": "2025-12-25T14:19:15.124Z"
+}

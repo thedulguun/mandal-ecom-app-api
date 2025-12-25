@@ -1,0 +1,86 @@
+{
+  "recordedAt": "2025-12-25T14:19:26.364Z",
+  "requestId": "055c5d71-4d51-48ba-8005-9b4bc9166a9e",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/getDeliveryCustomer",
+    "originalUrl": "/api/getDeliveryCustomer?startLimit=0&endLimit=100&order=&sort=asc&search=&value=&status=1&id=2015&action=0",
+    "query": {
+      "startLimit": "0",
+      "endLimit": "100",
+      "order": "",
+      "sort": "asc",
+      "search": "",
+      "value": "",
+      "status": "1",
+      "id": "2015",
+      "action": "0"
+    },
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/getDeliveryCustomer?startLimit=0&endLimit=100&order=&sort=asc&search=&value=&status=1&id=2015&action=0",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": {
+        "result": [
+          {
+            "created_at": "2025-12-25T14:19:13.000Z",
+            "cus_name": "Test",
+            "id": 340034,
+            "cus_phone": 1234,
+            "cus_phone1": 1234,
+            "city": null,
+            "district": null,
+            "committee": null,
+            "town": null,
+            "street": null,
+            "toot": null,
+            "addition": "Test",
+            "type": "Энгийн",
+            "verify": 0,
+            "deli_desc": null,
+            "item_type": "Сэгсэрч болохгүй",
+            "status": "1",
+            "region": "Бүсгүй",
+            "driver_name": null,
+            "total_price": null,
+            "code": "W1766672353150",
+            "shop_name": "Мандал Онлайн Шоп",
+            "reported": 0,
+            "reported_cus": 0,
+            "received_money": null
+          }
+        ],
+        "resultItem": []
+      },
+      "pagination": 1,
+      "token": "[REDACTED]"
+    }
+  },
+  "local": false,
+  "durationMs": 97,
+  "startedAt": "2025-12-25T14:19:26.267Z"
+}

@@ -1,0 +1,108 @@
+{
+  "recordedAt": "2025-12-25T14:12:20.531Z",
+  "requestId": "667f52bb-0367-4706-9b65-23c38e0a2b7e",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/getReportWareByUser",
+    "originalUrl": "/api/getReportWareByUser?startLimit=0&endLimit=100&order=&sort=asc&search=&value=&id=2015",
+    "query": {
+      "startLimit": "0",
+      "endLimit": "100",
+      "order": "",
+      "sort": "asc",
+      "search": "",
+      "value": "",
+      "id": "2015"
+    },
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/getReportWareByUser?startLimit=0&endLimit=100&order=&sort=asc&search=&value=&id=2015",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": [
+        {
+          "id": 14299,
+          "ware": "мандал онлайн шоп1",
+          "item": "Лаан гацуур 3 хос суурьтайгаа",
+          "type": 1,
+          "worker": "Мөнхгэрэл",
+          "quantity": 6,
+          "user_id": 2015,
+          "created_at": "2025-11-23T08:33:37.000Z",
+          "description": "11.23 Орлого"
+        },
+        {
+          "id": 9557,
+          "ware": "мандал онлайн шоп1",
+          "item": "Сарнай",
+          "type": 0,
+          "worker": "Мөнхгэрэл",
+          "quantity": 5,
+          "user_id": 2015,
+          "created_at": "2025-09-24T07:47:44.000Z",
+          "description": "9.24 Буцаалт "
+        },
+        {
+          "id": 9556,
+          "ware": "мандал онлайн шоп1",
+          "item": "Саран гэрэл",
+          "type": 0,
+          "worker": "Мөнхгэрэл",
+          "quantity": 1,
+          "user_id": 2015,
+          "created_at": "2025-09-24T07:46:44.000Z",
+          "description": "9.24 Буцаалт "
+        },
+        {
+          "id": 4426,
+          "ware": "мандал онлайн шоп1",
+          "item": "Сарнай",
+          "type": 1,
+          "worker": "Наранцэцэг",
+          "quantity": 6,
+          "user_id": 2015,
+          "created_at": "2025-06-14T04:54:36.000Z",
+          "description": "6,13"
+        },
+        {
+          "id": 4425,
+          "ware": "мандал онлайн шоп1",
+          "item": "Car mirror",
+          "type": 1,
+          "worker": "Наранцэцэг",
+          "quantity": 1,
+          "user_id": 2015,
+          "created_at": "2025-06-14T04:54:07.000Z",
+          "description": "6,13"
+        }
+      ],
+      "pagination": 5
+    }
+  },
+  "local": false,
+  "durationMs": 122,
+  "startedAt": "2025-12-25T14:12:20.409Z"
+}

@@ -1,0 +1,213 @@
+# Endpoint Contract Summary
+
+Generated: 2025-12-25T15:02:46.503Z
+Source: docs/captured-requests/runtime
+Total captures: 99
+
+## Status totals
+- 200: 97
+- 500: 1
+- local: 1
+
+## Endpoints (observed)
+- /api/branchIdUserId
+  - GET: 1 captures
+    - query: user_id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(1)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-47-156Z_f80452dd-f288-4d6a-a723-43429c7abe65_GET_api_branchIdUserId.json
+- /api/createChat
+  - POST: 2 captures
+    - body: comment, delivery_id, user_id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-11-32-406Z_31559642-24f6-4b49-b09a-b11fa5d85858_POST_api_createChat.json, docs/captured-requests/runtime/2025-12-25T14-19-18-689Z_4b7ed8d8-109b-4a7b-9f7d-08eb0f1bd00d_POST_api_createChat.json
+- /api/createDelivery
+  - POST: 2 captures
+    - body: addition, city, committee, cus_name, cus_phone, cus_phone1, deli_desc, district, item_name, item_type, items, operator, quantity, send_message, size, staff, street, toot, total_price, town, type, user_id, weight
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-11-25-159Z_c8b6cb4c-f377-423f-a78d-29c7787b7976_POST_api_createDelivery.json, docs/captured-requests/runtime/2025-12-25T14-19-13-152Z_3f54f0cb-5b2e-431b-bbf1-26667b1768fd_POST_api_createDelivery.json
+- /api/createItem
+  - POST: 1 captures
+    - body: img, name, price, staff, user_id, ware_id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(1)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-12-52-313Z_b375bad8-7272-43d6-a8cc-a275c7428542_POST_api_createItem.json
+- /api/deleteDelivery
+  - DELETE: 2 captures
+    - query: id, staff
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-11-49-508Z_ce5aaec6-9580-4f46-bbe1-5fe63ed4dae5_DELETE_api_deleteDelivery.json, docs/captured-requests/runtime/2025-12-25T14-19-29-781Z_72221663-a1e4-4465-9272-82e1b00c85fd_DELETE_api_deleteDelivery.json
+- /api/editDelivery
+  - PATCH: 2 captures
+    - body: addition, city, closed_at, code, committee, cus_name, cus_phone, cus_phone1, deli_desc, district, driver_desc, id, item_name, item_type, quantity, size, staff, street, toot, total_price, town, type, weight
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(1), 500(1)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-11-40-908Z_fb523ba8-64b6-4259-ba55-ef4b25b4c6ac_PATCH_api_editDelivery.json, docs/captured-requests/runtime/2025-12-25T14-19-26-113Z_5ea95dfb-fe14-471b-8719-8a60999f6b0d_PATCH_api_editDelivery.json
+    - error samples: docs/captured-requests/runtime/2025-12-25T14-11-40-908Z_fb523ba8-64b6-4259-ba55-ef4b25b4c6ac_PATCH_api_editDelivery.json
+- /api/editUser
+  - PATCH: 1 captures
+    - body: email, first_name, id, last_name, phone, phone1, r_d, shop_name, staff
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(1)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-13-27-395Z_2f0e7f3f-846d-47a9-b5fc-0f879f1856b7_PATCH_api_editUser.json
+- /api/getById
+  - GET: 4 captures
+    - query: id, table
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(4)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-11-28-161Z_79685b45-4985-4045-9e0d-8137fc0655af_GET_api_getById.json, docs/captured-requests/runtime/2025-12-25T14-11-37-364Z_0c4b0ef4-93e5-49e6-8382-c7ebd4d6b359_GET_api_getById.json, docs/captured-requests/runtime/2025-12-25T14-19-15-064Z_7e9ccaa1-949f-4cd3-8ba7-79ce8247de0e_GET_api_getById.json, docs/captured-requests/runtime/2025-12-25T14-19-26-242Z_dd420937-fe80-41a3-b352-3ad47807e381_GET_api_getById.json
+- /api/getChat
+  - GET: 5 captures
+    - query: delivery_id, user_id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(5)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-11-28-684Z_d6183f25-4eee-4620-a797-e25ae7ba554b_GET_api_getChat.json, docs/captured-requests/runtime/2025-12-25T14-11-32-514Z_0cabde88-d587-4a8a-8574-4f9e6a4c76d7_GET_api_getChat.json, docs/captured-requests/runtime/2025-12-25T14-11-37-717Z_31507775-f6a4-4c66-bcee-96df5e17e461_GET_api_getChat.json, docs/captured-requests/runtime/2025-12-25T14-19-15-230Z_9e9882f1-602d-4799-89b5-97c5ecc6f2ce_GET_api_getChat.json, docs/captured-requests/runtime/2025-12-25T14-19-18-797Z_ffac9e2a-7a62-41c5-a9cf-5d1271ad7104_GET_api_getChat.json
+- /api/getComic
+  - GET: 2 captures
+    - body types: object
+    - auth seen: no
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-24-979Z_440c7e76-8776-49af-b7c6-7812651937e2_GET_api_getComic.json, docs/captured-requests/runtime/2025-12-25T14-13-36-208Z_ec896e1e-a5c4-4eb8-8df3-0fac0d80a129_GET_api_getComic.json
+- /api/getComment
+  - GET: 2 captures
+    - body types: object
+    - auth seen: no
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-24-977Z_b994b3f5-3ab7-4614-8108-5bbf41d78a33_GET_api_getComment.json, docs/captured-requests/runtime/2025-12-25T14-13-36-193Z_a65d0627-2434-4be7-8b08-9429df83b2b4_GET_api_getComment.json
+- /api/getDelivery_items_by_id
+  - GET: 3 captures
+    - query: id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(3)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-11-28-682Z_ac73da25-66d8-40eb-b012-b42ea89ae9c6_GET_api_getDelivery_items_by_id.json, docs/captured-requests/runtime/2025-12-25T14-11-37-913Z_0e3cdbba-f266-4a83-af13-6dd8d152bc4b_GET_api_getDelivery_items_by_id.json, docs/captured-requests/runtime/2025-12-25T14-19-15-620Z_e7707d5c-59a5-47aa-bcb8-6bd37194b4dc_GET_api_getDelivery_items_by_id.json
+- /api/getDeliveryChart
+  - GET: 2 captures
+    - query: user_id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-33-401Z_1ac9c619-ab3e-44cc-bfa6-4d2927f015e4_GET_api_getDeliveryChart.json, docs/captured-requests/runtime/2025-12-25T14-18-41-723Z_9cc1578f-bc77-40eb-9aa1-f9150b1f8cde_GET_api_getDeliveryChart.json
+- /api/getDeliveryCustomer
+  - GET: 17 captures
+    - query: action, endLimit, id, order, search, sort, startLimit, status, value
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(17)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-33-222Z_e3dde05a-2217-4d13-8ad5-3b8892120486_GET_api_getDeliveryCustomer.json, docs/captured-requests/runtime/2025-12-25T14-09-50-522Z_317d4c06-ebc9-481c-b3fa-e53bbf011b0d_GET_api_getDeliveryCustomer.json, docs/captured-requests/runtime/2025-12-25T14-09-53-428Z_c40f34f8-5ad4-4a0e-b689-bd3a7a7b8ebc_GET_api_getDeliveryCustomer.json, docs/captured-requests/runtime/2025-12-25T14-11-25-330Z_3dfbed05-833b-4e66-8e04-58aec217bd79_GET_api_getDeliveryCustomer.json, docs/captured-requests/runtime/2025-12-25T14-11-35-151Z_3b1bffdb-01b0-44c7-9b10-cd0a94e789bb_GET_api_getDeliveryCustomer.json
+- /api/getDeliveryTotal
+  - GET: 6 captures
+    - query: id, table
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(6)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-33-395Z_b9b111f2-70fc-48f0-a0cb-a4a2acbf4609_GET_api_getDeliveryTotal.json, docs/captured-requests/runtime/2025-12-25T14-09-33-398Z_e637190c-a8c5-425e-aedb-08bcdd595b5c_GET_api_getDeliveryTotal.json, docs/captured-requests/runtime/2025-12-25T14-09-33-418Z_66d1434b-6ab2-4517-b766-0fcf98de1ba8_GET_api_getDeliveryTotal.json, docs/captured-requests/runtime/2025-12-25T14-18-41-522Z_dbb31361-fd5d-4ef3-803a-03db995cd49e_GET_api_getDeliveryTotal.json, docs/captured-requests/runtime/2025-12-25T14-18-41-707Z_32afa229-4676-453e-b898-5efad0c9de4f_GET_api_getDeliveryTotal.json
+- /api/getItemCustomer
+  - GET: 2 captures
+    - query: endLimit, id, order, search, sort, startLimit, value
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-12-25-953Z_9cd6a2cb-2f42-410e-a2e9-f8751a881641_GET_api_getItemCustomer.json, docs/captured-requests/runtime/2025-12-25T14-12-52-537Z_59c34b56-23c7-4213-88c3-df1acec94aa1_GET_api_getItemCustomer.json
+- /api/getNotification
+  - GET: 1 captures
+    - query: user_id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(1)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-13-01-409Z_4e91caaa-e663-4b6a-9723-fd5c223cb821_GET_api_getNotification.json
+- /api/getOrderCustomer
+  - GET: 2 captures
+    - query: endLimit, id, order, search, sort, startLimit, status, value
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-44-616Z_f7bfe44e-27ae-4d75-b4c0-6e55fc086456_GET_api_getOrderCustomer.json, docs/captured-requests/runtime/2025-12-25T14-09-46-200Z_464a02f6-d8f1-4636-aaaf-8a1b2e1b690e_GET_api_getOrderCustomer.json
+- /api/getReportDashboard
+  - GET: 2 captures
+    - query: user_id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-33-385Z_d44811a1-b6b2-4344-a86c-804b413e3733_GET_api_getReportDashboard.json, docs/captured-requests/runtime/2025-12-25T14-18-41-759Z_c32dbaa2-0017-4648-8c58-1d924ec997c0_GET_api_getReportDashboard.json
+- /api/getReportGeneralCustomerByUser
+  - GET: 1 captures
+    - query: endLimit, id, order, search, sort, startLimit, value
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(1)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-12-19-341Z_3515e258-192f-42de-81d1-5fb4c03bdfd1_GET_api_getReportGeneralCustomerByUser.json
+- /api/getReportWareByUser
+  - GET: 1 captures
+    - query: endLimit, id, order, search, sort, startLimit, value
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(1)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-12-20-531Z_667f52bb-0367-4706-9b65-23c38e0a2b7e_GET_api_getReportWareByUser.json
+- /api/getWareCustomer
+  - GET: 1 captures
+    - query: id, order, search, sort
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(1)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-12-58-838Z_cefddbb6-8861-4e28-b746-4f76a42b44b1_GET_api_getWareCustomer.json
+- /api/health
+  - GET: 1 captures
+    - body types: object
+    - auth seen: no
+    - statuses: local(1)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-08-58-542Z_c4db1d31-8d38-45da-8358-4143c0ea429c_GET_api_health.json
+- /api/itemsById
+  - GET: 7 captures
+    - query: id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(7)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-10-31-907Z_e9d52006-9273-4562-9f79-14c17f97a354_GET_api_itemsById.json, docs/captured-requests/runtime/2025-12-25T14-10-37-844Z_44ea240c-2ae3-418d-9595-df02febaea9e_GET_api_itemsById.json, docs/captured-requests/runtime/2025-12-25T14-10-44-364Z_c335d692-e456-4902-a375-1d807d238cde_GET_api_itemsById.json, docs/captured-requests/runtime/2025-12-25T14-10-51-276Z_99e16503-21db-42a8-a02c-86127cb12f6c_GET_api_itemsById.json, docs/captured-requests/runtime/2025-12-25T14-10-58-132Z_0e7a641f-fa3b-4850-a327-0340aff7af42_GET_api_itemsById.json
+- /api/itemsByWareId
+  - GET: 7 captures
+    - query: ware_id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(7)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-10-27-144Z_f3514adc-7d2e-4332-9e4f-71166ae4a908_GET_api_itemsByWareId.json, docs/captured-requests/runtime/2025-12-25T14-10-35-183Z_b28f4416-0186-4628-acaf-4d2449f16bc1_GET_api_itemsByWareId.json, docs/captured-requests/runtime/2025-12-25T14-10-39-650Z_6399bfd0-7cd0-45ca-984e-b8066cd07108_GET_api_itemsByWareId.json, docs/captured-requests/runtime/2025-12-25T14-10-46-583Z_6bd889ca-0952-43f8-b7c5-e552e51863a9_GET_api_itemsByWareId.json, docs/captured-requests/runtime/2025-12-25T14-10-53-109Z_7d9e1d5a-4496-4aa0-9b50-af3dbd6846f3_GET_api_itemsByWareId.json
+- /api/login
+  - POST: 2 captures
+    - body: device_token, email, password
+    - body types: object
+    - auth seen: no
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-32-982Z_bd4a1cdc-02cd-4e87-aa50-1651d9a52847_POST_api_login.json, docs/captured-requests/runtime/2025-12-25T14-18-41-236Z_12763d99-2f4a-43cf-b822-5076fb20ea23_POST_api_login.json
+- /api/reportCustomerByUser
+  - GET: 2 captures
+    - query: action, endLimit, id, order, reported, search, sort, startLimit, value
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(2)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-12-13-958Z_9f275c1f-b8d1-4069-9262-fe64bee8eed4_GET_api_reportCustomerByUser.json, docs/captured-requests/runtime/2025-12-25T14-12-17-579Z_b7d43de1-c86c-41b4-91c5-14cfb2a4fa8a_GET_api_reportCustomerByUser.json
+- /api/userById
+  - GET: 7 captures
+    - query: user_id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(7)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-54-440Z_9ad57108-bce1-4264-a4e7-3fd720350107_GET_api_userById.json, docs/captured-requests/runtime/2025-12-25T14-11-28-296Z_adb1f648-ff11-4786-b1b3-2a1c62f757c1_GET_api_userById.json, docs/captured-requests/runtime/2025-12-25T14-11-37-507Z_630367fc-edbf-4aac-8f42-44ea21597554_GET_api_userById.json, docs/captured-requests/runtime/2025-12-25T14-13-11-977Z_42179cbb-65f9-4552-a1c2-344bfa11f987_GET_api_userById.json, docs/captured-requests/runtime/2025-12-25T14-13-27-527Z_b48535c5-3c1d-4303-ae54-cd6bee48df73_GET_api_userById.json
+- /api/wareByUserId
+  - GET: 11 captures
+    - query: user_id
+    - body types: object
+    - auth seen: yes
+    - statuses: 200(11)
+    - samples: docs/captured-requests/runtime/2025-12-25T14-09-54-629Z_c5401b05-e64a-413c-b7a7-31b26830a156_GET_api_wareByUserId.json, docs/captured-requests/runtime/2025-12-25T14-10-31-904Z_fd78054b-a1df-497c-94e2-a58bd807bca5_GET_api_wareByUserId.json, docs/captured-requests/runtime/2025-12-25T14-10-37-667Z_58cc110f-cd0d-41dc-b82a-050e1ef9a9be_GET_api_wareByUserId.json, docs/captured-requests/runtime/2025-12-25T14-10-44-358Z_e67aa474-b5bc-4a1e-93e3-f0b5c54f2cea_GET_api_wareByUserId.json, docs/captured-requests/runtime/2025-12-25T14-10-51-209Z_81226d88-9e26-4f5e-9ecf-d5d055d74c84_GET_api_wareByUserId.json

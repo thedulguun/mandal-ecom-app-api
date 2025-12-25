@@ -1,0 +1,56 @@
+{
+  "recordedAt": "2025-12-25T14:12:58.838Z",
+  "requestId": "cefddbb6-8861-4e28-b746-4f76a42b44b1",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/getWareCustomer",
+    "originalUrl": "/api/getWareCustomer?order=&sort=asc&search=&id=2015",
+    "query": {
+      "order": "",
+      "sort": "asc",
+      "search": "",
+      "id": "2015"
+    },
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/getWareCustomer?order=&sort=asc&search=&id=2015",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": [
+        {
+          "id": 261,
+          "user_id": 2015,
+          "name": "мандал онлайн шоп1",
+          "created_at": "2025-04-10T08:55:24.000Z",
+          "shop_name": "Мандал онлайн шоп"
+        }
+      ]
+    }
+  },
+  "local": false,
+  "durationMs": 298,
+  "startedAt": "2025-12-25T14:12:58.540Z"
+}

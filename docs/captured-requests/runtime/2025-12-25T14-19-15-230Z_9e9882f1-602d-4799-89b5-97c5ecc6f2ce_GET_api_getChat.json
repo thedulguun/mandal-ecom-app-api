@@ -1,0 +1,46 @@
+{
+  "recordedAt": "2025-12-25T14:19:15.230Z",
+  "requestId": "9e9882f1-602d-4799-89b5-97c5ecc6f2ce",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/getChat",
+    "originalUrl": "/api/getChat?user_id=2015&delivery_id=W1766672353150",
+    "query": {
+      "user_id": "2015",
+      "delivery_id": "W1766672353150"
+    },
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/getChat?user_id=2015&delivery_id=W1766672353150",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": []
+    }
+  },
+  "local": false,
+  "durationMs": 106,
+  "startedAt": "2025-12-25T14:19:15.124Z"
+}

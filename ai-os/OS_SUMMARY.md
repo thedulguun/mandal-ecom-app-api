@@ -1,7 +1,7 @@
 File-Name: OS_SUMMARY.md
 File-Role: summary
-OS-Version: 0.1.5
-Last-Updated: 2025-12-10T17:50:00Z
+OS-Version: 0.1.7
+Last-Updated: 2025-12-25T15:32:30Z
 Last-Updated-By: AI
 Special-OS-File: false
 
@@ -18,8 +18,9 @@ Note: This summary can be stale. Say "update summaries" in an AI chat to refresh
 - Dev note: user is new to APIs; explain simply and, when using tech nouns (e.g., CORS, API, proxy), include short bracketed explanations.
 
 # Current Notes
-- Published SDK (`mandal-ebuuhia-sdk` 0.1.2) with captured + inferred helpers and convenience login/config flows; proxy exposes matching routes.
-- Added an API guide design focusing on clear “when to use” notes per endpoint to make the SDK/proxy easier to adopt.
+- Published SDK (`mandal-ebuuhia-sdk` 0.1.5) with captured + inferred helpers and convenience login/config flows; proxy exposes matching routes.
+- API docs now include evidence-based recommended flows; a generated validation report lists enforced fields from runtime captures.
+- Added a playbook for repeating this “website → proxy → SDK” process: `docs/website-to-sdk-playbook.md`.
 - Local snapshot is rewritten to call the proxy; request logger saves calls to `api-call-log.json` for catching missing endpoints; test harness remains available.
 
 # Safety & Integrity

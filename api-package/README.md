@@ -1,32 +1,57 @@
-# mandal-ebuuhia-sdk (scaffold)
+# mandal-ebuuhia-sdk
 
-Ship-ready client SDK for calling the Ebuuhia proxy/provider.
+Client SDK for calling the Ebuuhia proxy (or provider). Ship-ready with ESM/CJS builds.
 
 ## What’s here
 - `src/config.js` — set/get base URL and token; build auth headers.
 - `src/http.js` — tiny fetch wrapper that uses the config.
-- `src/helpers/` — place your generated helpers here (copy from `client/generated/...`).
-- `src/convenience.js` — grouped helpers and shortcuts (configure, loginAndSetToken).
-- `src/index.js` — export config + helpers + conveniences.
+- `src/helpers/` — generated helpers (from captures + inferred endpoints).
+- `src/convenience.js` — grouped helpers and shortcuts (configure, loginAndSetToken, helpersByDomain).
+- `dist/` — bundled ESM/CJS outputs.
 
-## How to use (once helpers are in place)
+## Quick start (use the proxy base)
 ```js
-import { setBaseUrl, setToken, deliveryList, helpersByDomain, loginAndSetToken, configure } from 'mandal-ebuuhia-sdk';
+import {
+  setBaseUrl,
+  setToken,
+  deliveryList,
+  deliveryCreate,
+  itemsByWareId,
+  wareByUserId,
+  helpersByDomain,
+  loginAndSetToken,
+  configure
+} from 'mandal-ebuuhia-sdk';
 
-setBaseUrl('http://localhost:3000/api'); // or provider URL
-setToken('<jwt>');
+setBaseUrl('http://localhost:3000/api'); // proxy hides provider creds
+setToken('<token-from-login>');
 
-const res = await deliveryList({ query: { startLimit: 0, endLimit: 10 } });
-console.log(res.status, res.data);
+// List deliveries
+const list = await deliveryList({ query: { startLimit: 0, endLimit: 10 } });
+console.log(list.status, list.data);
+
+// Create delivery (warehouse + items + contact/address)
+const wares = await wareByUserId({ query: { user_id: 2015 } });
+const items = await itemsByWareId({ query: { ware_id: wares.data?.[0]?.id } });
+const create = await deliveryCreate({
+  body: {
+    user_id: 2015,
+    cus_name: 'Receiver',
+    cus_phone: '123',
+    items: [{ id: items.data?.[0]?.id, start: 1 }],
+    addition: 'Entrance code 1234',
+    type: 'Энгийн',
+    item_type: 'Хагарна',
+    staff: 'Operator'
+  }
+});
+console.log(create.status, create.data);
 
 // Convenience examples
-configure({ baseUrl: 'http://localhost:3000/api', token: '<jwt>' });
+configure({ baseUrl: 'http://localhost:3000/api', token: '<token>' });
 await loginAndSetToken({ body: { email, password } });
 console.log(helpersByDomain.delivery.deliveryList); // namespaced helper
 ```
 
-## Next steps to make this shippable
-- Copy helpers from `client/generated/from-captures.js` and `client/generated/inferred.js` into `src/helpers/`.
-- Wire those helpers to the `http` wrapper.
-- Add a real build step (esbuild/rollup) to emit `dist/` ESM/CJS bundles.
-- Add minimal tests or smoke scripts if desired.
+## Build
+- `npm run build` → sync helpers + emit `dist/index.js` (ESM) and `dist/index.cjs` (CJS).

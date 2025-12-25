@@ -1,0 +1,66 @@
+{
+  "recordedAt": "2025-12-25T14:10:31.907Z",
+  "requestId": "e9d52006-9273-4562-9f79-14c17f97a354",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/itemsById",
+    "originalUrl": "/api/itemsById?id[]=5334",
+    "query": {
+      "id": [
+        "5334"
+      ]
+    },
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/itemsById?id=5334",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": [
+        {
+          "id": 5334,
+          "deli_id": null,
+          "bundle_id": null,
+          "user_id": 2015,
+          "ware_id": 261,
+          "name": "test 5",
+          "price": 0,
+          "quantity": 0,
+          "start": 0,
+          "end": 0,
+          "new": 0,
+          "report_item": 0,
+          "img": "",
+          "active": 1,
+          "created_at": "2025-12-25T13:56:23.000Z",
+          "shop_name": "Мандал онлайн шоп"
+        }
+      ]
+    }
+  },
+  "local": false,
+  "durationMs": 306,
+  "startedAt": "2025-12-25T14:10:31.601Z"
+}

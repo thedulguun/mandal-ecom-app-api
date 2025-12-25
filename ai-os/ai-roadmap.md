@@ -1,7 +1,7 @@
 File-Name: ai-roadmap.md
 File-Role: roadmap
-OS-Version: 0.1.5
-Last-Updated: 2025-12-10T17:50:00Z
+OS-Version: 0.1.7
+Last-Updated: 2025-12-25T15:32:30Z
 Last-Updated-By: AI
 Special-OS-File: false
 
@@ -12,6 +12,8 @@ Special-OS-File: false
 - Maintain the published SDK (`mandal-ebuuhia-sdk`) so it mirrors proxy behavior and captured request shapes.
 - Use the rewritten local snapshot and test harness to validate flows; capture new HAR/logs for uncovered endpoints.
 - Document env keys and minimal setup so the proxy and snapshot wiring stay reproducible.
+- Keep the endpoint contract and validation report generators in sync with captures.
+- Maintain the playbook for repeating this process on other sites/providers.
 
 ## Mid-Term
 - Expand API coverage: create/update deliveries, inventory management, status updates as endpoints become known.

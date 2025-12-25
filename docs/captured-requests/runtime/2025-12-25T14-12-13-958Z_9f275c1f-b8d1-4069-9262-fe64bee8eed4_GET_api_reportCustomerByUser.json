@@ -1,0 +1,57 @@
+{
+  "recordedAt": "2025-12-25T14:12:13.958Z",
+  "requestId": "9f275c1f-b8d1-4069-9262-fe64bee8eed4",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/reportCustomerByUser",
+    "originalUrl": "/api/reportCustomerByUser?startLimit=0&endLimit=100&order=&sort=asc&search=&value=&reported=0&id=2015&action=0",
+    "query": {
+      "startLimit": "0",
+      "endLimit": "100",
+      "order": "",
+      "sort": "asc",
+      "search": "",
+      "value": "",
+      "reported": "0",
+      "id": "2015",
+      "action": "0"
+    },
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/reportCustomerByUser?startLimit=0&endLimit=100&order=&sort=asc&search=&value=&reported=0&id=2015&action=0",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": {
+        "result": [],
+        "resultItem": []
+      },
+      "pagination": 4821
+    }
+  },
+  "local": false,
+  "durationMs": 423,
+  "startedAt": "2025-12-25T14:12:13.535Z"
+}

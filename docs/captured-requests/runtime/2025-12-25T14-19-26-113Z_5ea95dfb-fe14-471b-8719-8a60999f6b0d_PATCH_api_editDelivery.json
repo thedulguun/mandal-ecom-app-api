@@ -1,0 +1,77 @@
+{
+  "recordedAt": "2025-12-25T14:19:26.113Z",
+  "requestId": "5ea95dfb-fe14-471b-8719-8a60999f6b0d",
+  "proxy": {
+    "method": "PATCH",
+    "path": "/api/editDelivery",
+    "originalUrl": "/api/editDelivery",
+    "query": {},
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "409",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "content-type": "application/json",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {
+      "id": 340034,
+      "cus_name": "Test",
+      "cus_phone": 1234,
+      "cus_phone1": 1234,
+      "city": null,
+      "district": null,
+      "committee": null,
+      "town": null,
+      "street": null,
+      "toot": null,
+      "addition": "Test",
+      "deli_desc": null,
+      "total_price": null,
+      "item_name": null,
+      "quantity": null,
+      "size": "",
+      "weight": "",
+      "type": "Энгийн",
+      "item_type": "Сэгсэрч болохгүй",
+      "driver_desc": null,
+      "closed_at": null,
+      "code": "W1766672353150",
+      "staff": "Мандал"
+    }
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/editDelivery",
+    "method": "PATCH",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 0,
+        "info": "Rows matched: 1  Changed: 1  Warnings: 0",
+        "serverStatus": 2,
+        "warningStatus": 0,
+        "changedRows": 1
+      }
+    }
+  },
+  "local": false,
+  "durationMs": 303,
+  "startedAt": "2025-12-25T14:19:25.810Z"
+}

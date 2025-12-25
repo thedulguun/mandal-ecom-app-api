@@ -1,0 +1,42 @@
+{
+  "recordedAt": "2025-12-25T14:09:24.977Z",
+  "requestId": "b994b3f5-3ab7-4614-8108-5bbf41d78a33",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/getComment",
+    "originalUrl": "/api/getComment",
+    "query": {},
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/getComment",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": []
+    }
+  },
+  "local": false,
+  "durationMs": 358,
+  "startedAt": "2025-12-25T14:09:24.619Z"
+}

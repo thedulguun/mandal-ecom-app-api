@@ -1,0 +1,98 @@
+{
+  "recordedAt": "2025-12-25T14:11:25.159Z",
+  "requestId": "c8b6cb4c-f377-423f-a78d-29c7787b7976",
+  "proxy": {
+    "method": "POST",
+    "path": "/api/createDelivery",
+    "originalUrl": "/api/createDelivery",
+    "query": {},
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "529",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "content-type": "application/json",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {
+      "total_price": null,
+      "user_id": 2015,
+      "cus_name": "Test",
+      "cus_phone": "123",
+      "cus_phone1": "1234",
+      "city": null,
+      "district": null,
+      "committee": null,
+      "town": "",
+      "street": "",
+      "toot": "",
+      "addition": "Test Address",
+      "deli_desc": "Test Item - Don't deliver",
+      "item_name": "",
+      "item_type": "Сэгсэрч болохгүй",
+      "quantity": null,
+      "size": "",
+      "weight": "",
+      "type": "Энгийн",
+      "items": [
+        {
+          "id": "5334",
+          "start": 1
+        },
+        {
+          "id": "5126",
+          "start": 1
+        },
+        {
+          "id": "5125",
+          "start": 1
+        },
+        {
+          "id": "5117",
+          "start": 1
+        },
+        {
+          "id": "5068",
+          "start": 1
+        }
+      ],
+      "send_message": false,
+      "staff": "Мандал"
+    }
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/createDelivery",
+    "method": "POST",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 340025,
+        "info": "",
+        "serverStatus": 3,
+        "warningStatus": 0,
+        "changedRows": 0
+      },
+      "deliveryCode": "K1766671885147"
+    }
+  },
+  "local": false,
+  "durationMs": 308,
+  "startedAt": "2025-12-25T14:11:24.851Z"
+}

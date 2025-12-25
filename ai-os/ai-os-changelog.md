@@ -1,11 +1,20 @@
 File-Name: ai-os-changelog.md
 File-Role: changelog
-OS-Version: 0.1.5
-Last-Updated: 2025-12-10T17:50:00Z
+OS-Version: 0.1.7
+Last-Updated: 2025-12-25T15:32:30Z
 Last-Updated-By: AI
 Special-OS-File: false
 
 # Changelog Entries
+
+## [0.1.7] 2025-12-25T15:32:30Z - Playbook added
+- Added a detailed “website → proxy → SDK” playbook to make repeating this process easier.
+- Updated OS context/roadmap and summaries to point at the playbook.
+
+## [0.1.6] 2025-12-25T15:24:22Z - Evidence-based docs and validation
+- Documented recommended flows strictly from runtime captures and added a generated validation report.
+- Derived required keys in the contract and aligned proxy validation; shipped SDK 0.1.5.
+- Refreshed OS context, roadmap, and summaries to reflect the new tooling.
 
 ## [0.1.0] 2025-12-08T09:22:00Z - Initial OS bootstrap
 - Created core OS files (`ai-rules`, `ai-context`, `ai-workflows`, `ai-roadmap`, `ai-os-schema`, `ai-os-changelog`) with heavy-profile safety and workflows.

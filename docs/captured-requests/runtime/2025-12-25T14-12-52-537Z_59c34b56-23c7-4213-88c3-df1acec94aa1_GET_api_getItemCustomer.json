@@ -1,0 +1,164 @@
+{
+  "recordedAt": "2025-12-25T14:12:52.537Z",
+  "requestId": "59c34b56-23c7-4213-88c3-df1acec94aa1",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/getItemCustomer",
+    "originalUrl": "/api/getItemCustomer?startLimit=0&endLimit=100&order=&sort=asc&search=&value=&id=2015",
+    "query": {
+      "startLimit": "0",
+      "endLimit": "100",
+      "order": "",
+      "sort": "asc",
+      "search": "",
+      "value": "",
+      "id": "2015"
+    },
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/getItemCustomer?startLimit=0&endLimit=100&order=&sort=asc&search=&value=&id=2015",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": [
+        {
+          "created_at": "2025-12-25T14:12:52.000Z",
+          "name": "Test 6",
+          "price": 0,
+          "end": 0,
+          "id": 5335,
+          "start": 0,
+          "quantity": 0,
+          "user_id": 2015,
+          "shop_name": "Мандал онлайн шоп"
+        },
+        {
+          "created_at": "2025-12-25T13:56:23.000Z",
+          "name": "test 5",
+          "price": 0,
+          "end": 0,
+          "id": 5334,
+          "start": 0,
+          "quantity": 0,
+          "user_id": 2015,
+          "shop_name": "Мандал онлайн шоп"
+        },
+        {
+          "created_at": "2025-12-10T15:55:05.000Z",
+          "name": "test 4",
+          "price": 0,
+          "end": 0,
+          "id": 5126,
+          "start": 0,
+          "quantity": 0,
+          "user_id": 2015,
+          "shop_name": "Мандал онлайн шоп"
+        },
+        {
+          "created_at": "2025-12-10T15:34:38.000Z",
+          "name": "test 3",
+          "price": 0,
+          "end": 0,
+          "id": 5125,
+          "start": 11,
+          "quantity": -11,
+          "user_id": 2015,
+          "shop_name": "Мандал онлайн шоп"
+        },
+        {
+          "created_at": "2025-12-09T20:45:11.000Z",
+          "name": "test 2",
+          "price": 0,
+          "end": 0,
+          "id": 5117,
+          "start": 1,
+          "quantity": -1,
+          "user_id": 2015,
+          "shop_name": "Мандал онлайн шоп"
+        },
+        {
+          "created_at": "2025-12-03T18:39:06.000Z",
+          "name": "test",
+          "price": 100,
+          "end": 0,
+          "id": 5068,
+          "start": 3,
+          "quantity": -3,
+          "user_id": 2015,
+          "shop_name": "Мандал онлайн шоп"
+        },
+        {
+          "created_at": "2025-11-23T04:15:01.000Z",
+          "name": "Лаан гацуур 3 хос суурьтайгаа",
+          "price": 69000,
+          "end": 6,
+          "id": 5001,
+          "start": 0,
+          "quantity": 0,
+          "user_id": 2015,
+          "shop_name": "Мандал онлайн шоп"
+        },
+        {
+          "created_at": "2025-04-11T03:08:36.000Z",
+          "name": "Car mirror",
+          "price": 42900,
+          "end": 3,
+          "id": 2088,
+          "start": 0,
+          "quantity": -2,
+          "user_id": 2015,
+          "shop_name": "Мандал онлайн шоп"
+        },
+        {
+          "created_at": "2025-04-11T03:07:29.000Z",
+          "name": "Сарнай",
+          "price": 39500,
+          "end": 6,
+          "id": 2087,
+          "start": 0,
+          "quantity": -5,
+          "user_id": 2015,
+          "shop_name": "Мандал онлайн шоп"
+        },
+        {
+          "created_at": "2025-04-11T03:06:24.000Z",
+          "name": "Саран гэрэл",
+          "price": 33500,
+          "end": 8,
+          "id": 2086,
+          "start": 0,
+          "quantity": -9,
+          "user_id": 2015,
+          "shop_name": "Мандал онлайн шоп"
+        }
+      ],
+      "pagination": 10,
+      "token": "[REDACTED]"
+    }
+  },
+  "local": false,
+  "durationMs": 100,
+  "startedAt": "2025-12-25T14:12:52.437Z"
+}

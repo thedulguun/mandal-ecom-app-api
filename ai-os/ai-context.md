@@ -1,7 +1,7 @@
 File-Name: ai-context.md
 File-Role: context
-OS-Version: 0.1.5
-Last-Updated: 2025-12-10T17:50:00Z
+OS-Version: 0.1.7
+Last-Updated: 2025-12-25T15:32:30Z
 Last-Updated-By: AI
 Special-OS-File: false
 
@@ -15,7 +15,9 @@ Special-OS-File: false
 ## Goals & Scope
 - Short term: keep the proxy and SDK aligned with captured requests, including login and the growing set of delivery/report/item endpoints.
 - Medium term: expand coverage to the remaining captured-but-untested endpoints and harden the SDK convenience helpers.
+- Keep the endpoint contract and validation report generated from runtime captures; document flows only when observed.
 - Keep the system simple and maintainable for a small internal team; prefer clear wiring (proxy base, SDK config) and simple docs.
+- Keep a repeatable “website → proxy → SDK” playbook in docs for future integrations.
 
 ## Users & Stakeholders
 - Primary users: the requester and their internal team.
@@ -27,6 +29,7 @@ Special-OS-File: false
 - Tokens: keep in-memory during runtime; provide a clear-token/logout action.
 - Delivery list: fetch-all initially; no filters yet.
 - Operations should move fast but avoid breakage; prefer minimal dependencies.
+- Prefer evidence-based docs and validation (avoid assumptions when contract is unknown).
 
 ## Non-Goals
 - No external deployment setup defined yet.

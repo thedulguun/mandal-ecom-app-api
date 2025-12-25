@@ -1,7 +1,7 @@
 File-Name: PROJECT_SUMMARY.md
 File-Role: summary
-OS-Version: 0.1.5
-Last-Updated: 2025-12-10T17:50:00Z
+OS-Version: 0.1.7
+Last-Updated: 2025-12-25T15:32:30Z
 Last-Updated-By: AI
 Special-OS-File: false
 
@@ -15,8 +15,9 @@ Note: This summary can be stale. Say "update summaries" in an AI chat to refresh
 
 # Current Scope
 - Proxy and SDK cover the captured delivery/report/item endpoints (login, deliveries, ware/item lookups, charts/totals, etc.); token kept in memory on the server.
-- npm package ships dist builds (CJS/ESM) with convenience helpers for config/login; proxy exposes matching routes under `/api`.
+- npm package ships dist builds (CJS/ESM) with convenience helpers for config/login; proxy exposes matching routes under `/api` (SDK version 0.1.5).
 - Static snapshot and test page exercise the API; request logger helps surface missing endpoints for future additions.
+- Evidence-based docs: endpoint contract + validation report generated from runtime captures.
 
 # Constraints & Preferences
 - Stack: Node + Express backend; vanilla JS frontend; Node 18+ for built-in `fetch`.
@@ -32,4 +33,5 @@ Note: This summary can be stale. Say "update summaries" in an AI chat to refresh
 - Keep captured requests up to date; map new endpoints into the proxy and client SDK.
 - Extend the client SDK first, then wire the proxy and UI; keep changes small and test with the static page.
 - Add env keys as new provider requirements emerge (base URL, credentials, headers).
-- Use generation scripts (`generate-client`, `generate-inferred`) and proxy/test page to validate flows; note multipart uploads still need special handling.
+- Use generation scripts (`generate-client`, `generate-inferred`, `generate-endpoint-contracts`, `generate-validation-report`) and proxy/test page to validate flows; note multipart uploads still need special handling.
+- Follow `docs/website-to-sdk-playbook.md` when repeating this process for new sites/providers.

@@ -1,0 +1,91 @@
+{
+  "recordedAt": "2025-12-25T14:10:39.650Z",
+  "requestId": "6399bfd0-7cd0-45ca-984e-b8066cd07108",
+  "proxy": {
+    "method": "GET",
+    "path": "/api/itemsByWareId",
+    "originalUrl": "/api/itemsByWareId?ware_id=261",
+    "query": {
+      "ware_id": "261"
+    },
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "[REDACTED]",
+      "cache-control": "no-cache",
+      "accept-language": "mn",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "expires": "0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "origin": "http://localhost:4173",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "http://localhost:4173/",
+      "accept-encoding": "gzip, deflate, br, zstd"
+    },
+    "body": {}
+  },
+  "upstream": {
+    "url": "https://api.ebuuhia.mn/api/v1/itemsByWareId?ware_id=261",
+    "method": "GET",
+    "status": 200,
+    "ok": true,
+    "data": {
+      "data": [
+        {
+          "id": 2086,
+          "name": "Саран гэрэл",
+          "quantity": -9
+        },
+        {
+          "id": 2087,
+          "name": "Сарнай",
+          "quantity": -5
+        },
+        {
+          "id": 2088,
+          "name": "Car mirror",
+          "quantity": -2
+        },
+        {
+          "id": 5001,
+          "name": "Лаан гацуур 3 хос суурьтайгаа",
+          "quantity": 0
+        },
+        {
+          "id": 5068,
+          "name": "test",
+          "quantity": -3
+        },
+        {
+          "id": 5117,
+          "name": "test 2",
+          "quantity": -1
+        },
+        {
+          "id": 5125,
+          "name": "test 3",
+          "quantity": -11
+        },
+        {
+          "id": 5126,
+          "name": "test 4",
+          "quantity": 0
+        },
+        {
+          "id": 5334,
+          "name": "test 5",
+          "quantity": 0
+        }
+      ]
+    }
+  },
+  "local": false,
+  "durationMs": 101,
+  "startedAt": "2025-12-25T14:10:39.549Z"
+}
