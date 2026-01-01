@@ -49,6 +49,7 @@ Generated report: see `docs/validation-report.md` (run `node scripts/generate-va
 
 ### Required body fields (POST/PATCH)
 - `POST /api/login`: `email`, `password`
+- `POST /api/createDelivery`: `addition`, `cus_name`, `cus_phone`, `cus_phone1`, `items`, `send_message`, `staff`, `type`, `user_id`
 - `POST /api/createChat`: `user_id`, `delivery_id`, `comment`
 - `POST /api/createItem`: `name`, `price`, `staff`, `user_id`, `ware_id`
 - `PATCH /api/editDelivery`: `id`
@@ -217,6 +218,7 @@ All proxy routes are prefixed with `/api`; the upstream path is the same string 
 These are practical “recipes” (step-by-step sequences) based only on runtime captures in `docs/captured-requests/runtime`. If an endpoint is not mentioned here, it has not been captured yet and its fields are still unverified.
 
 ### Delivery: create (warehouse + items + customer form)
+For UI [user interface] form guidance and payload [request body] mapping, see `api-package/docs/create-delivery-flow.md`.
 Use these four proxy calls to build a delivery without exposing provider credentials:
 
 1) Choose warehouse: `GET /api/wareByUserId?user_id=<customerId>` → user picks a `ware_id`.
@@ -225,7 +227,24 @@ Use these four proxy calls to build a delivery without exposing provider credent
    - Contact: `cus_name`, `cus_phone`, optional `cus_phone1`.
    - Address: `city`, `district`, `committee`, `town`, `street`, `toot`, `addition`.
    - Meta: `type`, `item_type`, `deli_desc`, optional `total_price`, `send_message`, optional manual item fields (`item_name`, `quantity`, `size`, `weight`) if not using stock items.
-4) Create delivery: `POST /api/createDelivery` with `user_id`, `items` array (from step 2) or manual item fields, the contact/address/meta fields above, and `staff` (operator name). The proxy forwards upstream and keeps the provider token server-side.
+4) Minimal body template (required fields only, based on runtime captures):
+```json
+{
+  "user_id": 123,
+  "staff": "Operator Name",
+  "type": "<type from UI>",
+  "send_message": false,
+  "cus_name": "Receiver Name",
+  "cus_phone": "99999999",
+  "cus_phone1": "99999999",
+  "addition": "Street + building + notes",
+  "items": [
+    { "id": "ITEM_ID", "start": 1 }
+  ]
+}
+```
+5) Optional fields seen in captures (can be empty or null in samples): `city`, `district`, `committee`, `town`, `street`, `toot`, `deli_desc`, `item_name`, `item_type`, `quantity`, `size`, `weight`, `total_price`, `operator`.
+6) Create delivery: `POST /api/createDelivery` with `user_id`, `items` array (from step 2) or manual item fields, the contact/address/meta fields above, and `staff` (operator name). The proxy forwards upstream and keeps the provider token server-side.
 
 ### Delivery: view details + chat
 1) Get delivery detail: `GET /api/getById?id=<deliveryId>&table=delivery`.

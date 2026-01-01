@@ -29,3 +29,43 @@ export const loginAndSetToken = async (options = {}) => {
   if (token) setToken(token);
   return res;
 };
+
+export const buildCreateDeliveryBody = (form = {}, options = {}) => {
+  const { includeOptional = true } = options;
+  const customer = form.customer || {};
+  const address = form.address || {};
+  const item = form.item || {};
+  const body = {
+    user_id: form.user_id ?? form.userId ?? null,
+    staff: form.staff ?? '',
+    type: form.type ?? form.deliveryType ?? '',
+    send_message: form.send_message ?? form.sendMessage ?? false,
+    cus_name: form.cus_name ?? customer.name ?? '',
+    cus_phone: form.cus_phone ?? customer.phone ?? null,
+    cus_phone1: form.cus_phone1 ?? customer.phone1 ?? null,
+    addition: form.addition ?? address.addition ?? '',
+    items: Array.isArray(form.items) ? form.items : []
+  };
+
+  if (!includeOptional) {
+    return body;
+  }
+
+  return {
+    ...body,
+    total_price: form.total_price ?? form.totalPrice ?? null,
+    city: form.city ?? address.city ?? null,
+    district: form.district ?? address.district ?? null,
+    committee: form.committee ?? address.committee ?? null,
+    town: form.town ?? address.town ?? '',
+    street: form.street ?? address.street ?? '',
+    toot: form.toot ?? address.toot ?? '',
+    deli_desc: form.deli_desc ?? form.deliDesc ?? item.desc ?? '',
+    item_name: form.item_name ?? form.itemName ?? item.name ?? '',
+    item_type: form.item_type ?? form.itemType ?? item.type ?? '',
+    quantity: form.quantity ?? item.quantity ?? null,
+    size: form.size ?? item.size ?? '',
+    weight: form.weight ?? item.weight ?? '',
+    operator: form.operator ?? null
+  };
+};

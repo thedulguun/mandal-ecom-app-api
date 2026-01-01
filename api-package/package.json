@@ -1,6 +1,6 @@
 {
   "name": "mandal-ebuuhia-sdk",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "type": "module",
   "description": "Client SDK for calling the Ebuuhia proxy/provider.",
   "license": "UNLICENSED",

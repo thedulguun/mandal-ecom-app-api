@@ -20,7 +20,8 @@ import {
   wareByUserId,
   helpersByDomain,
   loginAndSetToken,
-  configure
+  configure,
+  buildCreateDeliveryBody
 } from 'mandal-ebuuhia-sdk';
 
 setBaseUrl('http://localhost:3000/api'); // proxy hides provider creds
@@ -33,18 +34,17 @@ console.log(list.status, list.data);
 // Create delivery (warehouse + items + contact/address)
 const wares = await wareByUserId({ query: { user_id: 2015 } });
 const items = await itemsByWareId({ query: { ware_id: wares.data?.[0]?.id } });
-const create = await deliveryCreate({
-  body: {
-    user_id: 2015,
-    cus_name: 'Receiver',
-    cus_phone: '123',
-    items: [{ id: items.data?.[0]?.id, start: 1 }],
-    addition: 'Entrance code 1234',
-    type: 'Энгийн',
-    item_type: 'Хагарна',
-    staff: 'Operator'
-  }
+const body = buildCreateDeliveryBody({
+  userId: 2015,
+  staff: 'Operator',
+  type: 'Энгийн',
+  sendMessage: false,
+  customer: { name: 'Receiver', phone: '123', phone1: '123' },
+  address: { addition: 'Entrance code 1234' },
+  items: [{ id: items.data?.[0]?.id, start: 1 }],
+  item: { type: 'Хагарна' }
 });
+const create = await deliveryCreate({ body });
 console.log(create.status, create.data);
 
 // Convenience examples

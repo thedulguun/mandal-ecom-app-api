@@ -43,6 +43,30 @@ curl "${EBUUHIA_BASE_URL}/getDeliveryCustomer?startLimit=0&endLimit=100&order=&s
 ```
 - Response: `{ "data": { "result": [...], "resultItem": [...] }, "pagination": <number>, "token": "<token>" }`
 
+### Create delivery (captured)
+- Method/Path: `POST /createDelivery`
+- Auth: `Authorization: <token>` (raw token, no `Bearer`).
+- Headers: `Content-Type: application/json`, `Accept: application/json, text/plain, */*`
+- Required fields (based on runtime captures + proxy validation): `addition`, `cus_name`, `cus_phone`, `cus_phone1`, `items`, `send_message`, `staff`, `type`, `user_id`.
+- Body (minimal, required only):
+```json
+{
+  "user_id": 123,
+  "staff": "Operator Name",
+  "type": "<type from UI>",
+  "send_message": false,
+  "cus_name": "Receiver Name",
+  "cus_phone": "99999999",
+  "cus_phone1": "99999999",
+  "addition": "Street + building + notes",
+  "items": [
+    { "id": "ITEM_ID", "start": 1 }
+  ]
+}
+```
+- Optional fields seen in captures (empty or null in samples): `city`, `district`, `committee`, `town`, `street`, `toot`, `deli_desc`, `item_name`, `item_type`, `quantity`, `size`, `weight`, `total_price`, `operator`.
+- Notes: `items` comes from `/itemsByWareId` and uses `{ id, start }` where `start` is the quantity.
+
 ### Reports and inventory captures
 - We have captured samples for financial and merged customer reports, warehouse inventory, and past/new delivery lists. See the files under `docs/captured-requests/` for raw cURL plus responses.
 
